@@ -1,4 +1,4 @@
-class Mesh {
+class SceneObject {
   constructor(gl, sourceMesh, sourceMTL) {
     this.gl = gl;
     this.mesh = [];
@@ -49,10 +49,20 @@ class Mesh {
     var zmin = 0.1;
     var projectionMatrix = m4.perspective(fieldOfViewRadians, aspect, zmin, 200);
 
-    var cameraPosition = [3, 3, -3];
+    // var cameraPosition = [];
     var up = [0, 0, 1];
     var target = [0, 0, 0];
-    var cameraMatrix = m4.lookAt(cameraPosition, target, up);
+    var cameraMatrix;
+    cameraMatrix = m4.zRotation(degToRad(controls.camera_rotate));
+    cameraMatrix = m4.translate(cameraMatrix, controls.x, controls.y, controls.z);
+    
+    var cameraPosition = [
+      cameraMatrix[12],
+      cameraMatrix[13],
+      cameraMatrix[14],
+    ];
+
+    cameraMatrix = m4.lookAt(cameraPosition, target, up);
     var viewMatrix = m4.inverse(cameraMatrix);
 
     var ambientLight=[0, 0, 0];

@@ -9,8 +9,7 @@ var controls = {
   scale_y: 1,
   scale_z: 1,
   camera_rotate: 0,
-  fov: 60,
-  color: [0, 1, 0.5, 1],
+  fov: 60
 };
 
 var getSourceSynch = function (url) {
@@ -320,8 +319,8 @@ function main() {
   createGui();
 
   // Initialize the mesh
-  const mesh = new Mesh(scene.gl, "data/boeing/boeing_3.obj", "data/boeing/boeing_3.mtl");
-  // const mesh2 = new Mesh(scene.gl, "data/cube/cube.obj", "data/cube/cube.mtl");
+  const mesh = new SceneObject(scene.gl, "data/boeing/boeing_3.obj", "data/boeing/boeing_3.mtl");
+  const mesh2 = new SceneObject(scene.gl, "data/cube/cube.obj", "data/cube/cube.mtl");
 
 
   console.log(scene.objects);
@@ -350,9 +349,9 @@ main();
 
 function createGui() {
   var gui = new dat.GUI();
-  gui.add(controls, "x", -500, 500, 1);
-  gui.add(controls, "y", -500, 500, 1);
-  gui.add(controls, "z", -500, 500, 1);
+  gui.add(controls, "x", -10, 10, 0.1);
+  gui.add(controls, "y", -10, 10, 1);
+  gui.add(controls, "z", -10, 10, 1);
   gui.add(controls, "rotate_x", 0, 360);
   gui.add(controls, "rotate_y", 0, 360);
   gui.add(controls, "rotate_z", 0, 360);
