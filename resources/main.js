@@ -8,7 +8,9 @@ var controls = {
   scale_x: 1,
   scale_y: 1,
   scale_z: 1,
-  camera_rotate: 0,
+  phi: 20,
+  theta: 80,
+  distance: 10,
   fov: 60
 };
 
@@ -316,6 +318,7 @@ function main() {
 
   scene = new Scene("canvas", "3d-vertex-shader", "3d-fragment-shader");
 
+
   createGui();
 
   // Initialize the mesh
@@ -346,9 +349,9 @@ function main() {
 }
 
 main();
-
+var gui
 function createGui() {
-  var gui = new dat.GUI();
+  gui = new dat.GUI();
   gui.add(controls, "x", -10, 10, 0.1);
   gui.add(controls, "y", -10, 10, 1);
   gui.add(controls, "z", -10, 10, 1);
@@ -360,7 +363,10 @@ function createGui() {
   gui.add(controls, "scale_y", 0, 5, 0.1);
   gui.add(controls, "scale_z", 0, 5, 0.1);
 
-  gui.add(controls, "camera_rotate", 0, 360);
+  gui.add(controls, "phi", 0, 180, 0.1);
+  gui.add(controls, "theta", 0, 360, 1);
+  gui.add(controls, "distance", 0, 20, 1);
+
 
   gui.add(controls, "fov", 0, 180);
 
@@ -371,3 +377,5 @@ function createGui() {
   //   });
   // });
 }
+
+
