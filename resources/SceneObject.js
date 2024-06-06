@@ -1,9 +1,13 @@
 class SceneObject {
-  constructor(gl, sourceMesh, sourceMTL) {
+  constructor(gl, sourceMesh, sourceMTL, position = [0, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1]) {
+    /** @type {WebGLRenderingContext} */
     this.gl = gl;
     this.mesh = [];
     this.mesh.sourceMesh = sourceMesh;
     this.mesh.fileMTL = sourceMTL;
+    this.position = position;
+    this.rotation = rotation;
+    this.scale = scale;
 
     LoadMesh(gl, this.mesh).then(() => {
       scene.objects.push(this);
@@ -43,7 +47,7 @@ class SceneObject {
     var fieldOfViewRadians = degToRad(30);
     var aspect = scene.gl.canvas.clientWidth / scene.gl.canvas.clientHeight;
     var zmin = 0.1;
-    var projectionMatrix = m4.perspective(fieldOfViewRadians, aspect, zmin, 200);
+    var projectionMatrix = m4.perspective(fieldOfViewRadians, aspect, zmin, 10000);
 
     // var cameraPosition = [];
     var up = [0, 0, 1];
@@ -52,21 +56,19 @@ class SceneObject {
 
     projectionMatrix = m4.translate(projectionMatrix, controls.x, controls.y, controls.z);
 
-    // var cameraPosition = [
-    //   cameraMatrix[12],
-    //   cameraMatrix[13],
-    //   cameraMatrix[14],
-    // ];
-
     var cameraPosition = [
       controls.distance * Math.sin(degToRad(controls.phi)) * Math.cos(degToRad(controls.theta)),
       controls.distance * Math.sin(degToRad(controls.phi)) * Math.sin(degToRad(controls.theta)),
       controls.distance * Math.cos(degToRad(controls.phi)),
     ];
 
-
     cameraMatrix = m4.lookAt(cameraPosition, target, up);
     var viewMatrix = m4.inverse(cameraMatrix);
+    viewMatrix = m4.translate(viewMatrix, this.position[0], this.position[1], this.position[2]);
+    viewMatrix = m4.xRotate(viewMatrix, degToRad(this.rotation[0]));
+    viewMatrix = m4.yRotate(viewMatrix, degToRad(this.rotation[1]));
+    viewMatrix = m4.zRotate(viewMatrix, degToRad(this.rotation[2]));
+    viewMatrix = m4.scale(viewMatrix, this.scale[0], this.scale[1], this.scale[2]);
 
     var ambientLight = [0, 0, 0];
     var colorLight = [1.0, 1.0, 1.0];

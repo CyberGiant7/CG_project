@@ -11,7 +11,7 @@ var controls = {
   phi: 20,
   theta: 80,
   distance: 10,
-  fov: 60
+  fov: 60,
 };
 
 var getSourceSynch = function (url) {
@@ -315,15 +315,16 @@ function computeMatrix(viewProjectionMatrix, translation, xRotation, yRotation) 
 var scene;
 
 function main() {
-
   scene = new Scene("canvas", "3d-vertex-shader", "3d-fragment-shader");
-
 
   createGui();
 
   // Initialize the mesh
-  const mesh = new SceneObject(scene.gl, "data/boeing/boeing_3.obj", "data/boeing/boeing_3.mtl");
-  const mesh2 = new SceneObject(scene.gl, "data/cube/cube.obj", "data/cube/cube.mtl");
+  // const mesh = new SceneObject(scene.gl, "data/boeing/boeing_4.obj", "data/boeing/boeing_4.mtl");
+  // const mesh2 = new SceneObject(scene.gl, "data/cube/cube.obj", "data/cube/cube.mtl");
+  // const mesh3 = new SceneObject(scene.gl, "data/robot/Holo_Final.obj", "data/cube/Holo_Final.mtl");
+  const mesh4 = new SceneObject(scene.gl, "data/plane/plane.obj", "data/cube/plane.mtl", [2,2,-0.52], [0,0,0], [2,2,2]);
+  const mesh3 = new SceneObject(scene.gl, "data/computer/computer.obj", "data/cube/computer.mtl");
 
 
   console.log(scene.objects);
@@ -339,17 +340,16 @@ function main() {
     scene.gl.clearColor(0, 0, 0, 0);
 
     scene.objects.forEach((mesh) => {
-      // mesh.updateBuffers();
       mesh.draw(scene.programInfo.program);
     });
-    requestAnimationFrame(drawScene)
+    requestAnimationFrame(drawScene);
   }
 
   drawScene();
 }
 
 main();
-var gui
+var gui;
 function createGui() {
   gui = new dat.GUI();
   gui.add(controls, "x", -10, 10, 0.1);
@@ -367,7 +367,6 @@ function createGui() {
   gui.add(controls, "theta", 0, 360, 1);
   gui.add(controls, "distance", 0, 20, 1);
 
-
   gui.add(controls, "fov", 0, 180);
 
   // // call drawScene function on change of any control
@@ -377,5 +376,3 @@ function createGui() {
   //   });
   // });
 }
-
-

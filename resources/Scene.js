@@ -3,6 +3,7 @@ class Scene {
     this.objects = [];
     /** @type {HTMLCanvasElement} */
     this.canvas = document.getElementById(canvas_id, vertex_shader_id, fragment_shader_id);
+    /** @type {WebGLRenderingContext} */
     this.gl = this.canvas.getContext("webgl");
 
     if (!this.gl) {
@@ -22,7 +23,7 @@ class Scene {
 
     this.canvas.onmousedown = mouseDown;
     this.canvas.onmouseup = mouseUp;
-    this.canvas.mouseout = mouseUp;
+    // this.canvas.mouseout = mouseUp;
     this.canvas.onmousemove = mouseMove;
     this.canvas.onwheel = mouseWheel;
   }
