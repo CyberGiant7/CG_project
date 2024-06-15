@@ -10,7 +10,7 @@ Ke 0.000000 0.000000 0.000000
 Ni 1.450000
 d 1.000000
 illum 2000
-map_Bump -bm 0.000000 retro_computer_setup_Mat_Normal(OpenGL).png
+map_Bump retro_computer_setup_Mat_Normal(OpenGL).png
 map_Kd retro_computer_setup_Mat_BaseColor.png
 map_Ke retro_computer_setup_Mat_Emissive.png
 map_Ks retro_computer_setup_Mat_SpecularLvl.png

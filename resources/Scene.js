@@ -2,7 +2,7 @@ class Scene {
   constructor(canvas_id, vertex_shader_id, fragment_shader_id) {
     this.objects = [];
     /** @type {HTMLCanvasElement} */
-    this.canvas = document.getElementById(canvas_id, vertex_shader_id, fragment_shader_id);
+    this.canvas = document.getElementById(canvas_id);
     /** @type {WebGLRenderingContext} */
     this.gl = this.canvas.getContext("webgl");
 
@@ -18,7 +18,7 @@ class Scene {
 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
 
-    this.programInfo = webglUtils.createProgramInfo(this.gl, ["3d-vertex-shader", "3d-fragment-shader"]);
+    this.programInfo = webglUtils.createProgramInfo(this.gl, [vertex_shader_id, fragment_shader_id]);
     this.gl.useProgram(this.programInfo.program);
 
     this.canvas.onmousedown = mouseDown;
