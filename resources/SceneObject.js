@@ -62,7 +62,9 @@ class SceneObject {
     viewMatrix = m4.scale(viewMatrix, this.scale[0], this.scale[1], this.scale[2]);
 
     const ambientLight = [0, 0, 0];
-    const colorLight = [1.0, 1.0, 1.0];
+    var colorLight = [1.0, 1.0, 1.0];
+
+    colorLight = colorLight.map((c) => c * scene.controls.light_intensity);
 
     gl.useProgram(scene.programInfo.program);
 
