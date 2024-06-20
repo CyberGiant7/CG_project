@@ -19,7 +19,7 @@
     <div>
       <div class="description">Textured Cube with the same not symmetrical image on each face and illumination model. <br /></div>
 
-      <canvas id="canvas" width="1920" height="1080"> Your browser does not support the HTML5 canvas tag. </canvas>
+      <canvas id="canvas" width="4096" height="3840"> Your browser does not support the HTML5 canvas tag. </canvas>
     </div>
 
     <script id="vertex-shader-2d" type="notjs" src="./resources/vertex_shader.vert"></script>
@@ -33,28 +33,44 @@
       attribute vec2 a_texcoord;
       attribute vec4 a_color;
 
+      uniform vec3 u_lightWorldPosition;
+      uniform vec3 u_viewWorldPosition;
+
       uniform mat4 u_projection;
       uniform mat4 u_view;
       uniform mat4 u_world;
-      uniform vec3 u_viewWorldPosition;
-
+     
       varying vec3 v_normal;
       varying vec3 v_tangent;
-      varying vec3 v_surfaceToView;
       varying vec2 v_texcoord;
       varying vec4 v_color;
+
+      varying vec3 v_surfaceToView;
+      varying vec3 v_surfaceToLight;
 
       void main() {
         vec4 worldPosition = u_world * a_position;
         gl_Position = u_projection * u_view * worldPosition;
-        v_surfaceToView = u_viewWorldPosition - worldPosition.xyz;
 
+        
         mat3 normalMat = mat3(u_world);
         v_normal = normalize(normalMat * a_normal);
         v_tangent = normalize(normalMat * a_tangent);
 
         v_texcoord = a_texcoord;
         v_color = a_color;
+
+        // compute the world position of the surface
+        vec3 surfaceWorldPosition = (u_world * a_position).xyz;
+
+        // compute the vector of the surface to the light
+        // and pass it to the fragment shader
+        v_surfaceToLight = u_lightWorldPosition - surfaceWorldPosition;
+
+        // compute the vector of the surface to the view/camera
+        // and pass it to the fragment shader
+        v_surfaceToView = normalize(u_viewWorldPosition - surfaceWorldPosition);
+
       }
     </script>
     <!-- fragment shader -->
@@ -63,9 +79,11 @@
 
       varying vec3 v_normal;
       varying vec3 v_tangent;
-      varying vec3 v_surfaceToView;
       varying vec2 v_texcoord;
       varying vec4 v_color;
+
+      varying vec3 v_surfaceToView;
+      varying vec3 v_surfaceToLight;
 
       uniform vec3 diffuse;
       uniform sampler2D diffuseMap;
@@ -79,6 +97,8 @@
       uniform vec3 u_lightDirection;
       uniform vec3 u_ambientLight;
 
+      uniform vec3 u_lightColor;
+
       void main () {
         vec3 normal = normalize(v_normal);
         vec3 tangent = normalize(v_tangent);
@@ -88,10 +108,14 @@
         normal = texture2D(normalMap, v_texcoord).rgb * 2. - 1.;
         normal = normalize(tbn * normal);
 
+        vec3 surfaceToLightDirection = normalize(v_surfaceToLight);
         vec3 surfaceToViewDirection = normalize(v_surfaceToView);
-        vec3 halfVector = normalize(u_lightDirection + surfaceToViewDirection);
+        // vec3 halfVector = normalize(u_lightDirection + surfaceToViewDirection);
+        vec3 halfVector = normalize(surfaceToLightDirection + surfaceToViewDirection);
 
-        float fakeLight = dot(u_lightDirection, normal) * .5 + .5;
+        float light = dot(normal, surfaceToLightDirection);
+
+        //float light = dot(u_lightDirection, normal) * .5 + .5;
         float specularLight = clamp(dot(normal, halfVector), 0.0, 1.0);
         vec4 specularMapColor = texture2D(specularMap, v_texcoord);
         vec3 effectiveSpecular = specular * specularMapColor.rgb;
@@ -103,9 +127,9 @@
         gl_FragColor = vec4(
             emissive +
             ambient * u_ambientLight +
-            effectiveDiffuse * fakeLight +
+            effectiveDiffuse * light * u_lightColor +
             effectiveSpecular * pow(specularLight, shininess),
-            effectiveOpacity);// * 0.0 + vec4(normal * 0.5 + 0.5 + effectiveSpecular * pow(specularLight, shininess), 1);
+            effectiveOpacity);
       }
     </script>
 

@@ -11,7 +11,6 @@ class SceneObject {
 
     this.loadMeshAndMaterials().then(() => {
       scene.objects.push(this);
-      this.initBuffers();
     });
   }
 
@@ -51,10 +50,10 @@ class SceneObject {
     }
 
     // hack the materials so we can see the specular map
-    Object.values(materials).forEach((m) => {
-      m.shininess = 25;
-      m.specular = [3, 2, 1];
-    });
+    // Object.values(materials).forEach((m) => {
+    //   m.shininess = 25;
+    //   m.specular = [3, 2, 1];
+    // });
 
     const defaultMaterial = {
       diffuse: [1, 1, 1],
@@ -109,28 +108,6 @@ class SceneObject {
     });
   }
 
-  initBuffers() {
-    const gl = this.gl;
-
-    // this.positionLocation = gl.getAttribLocation(scene.programInfo.program, "a_position");
-    // this.normalLocation = gl.getAttribLocation(scene.programInfo.program, "a_normal");
-    // this.texcoordLocation = gl.getAttribLocation(scene.programInfo.program, "a_texcoord");
-
-    // const { positions, normals, texcoords } = this.mesh[0].data;
-
-    // this.positionBuffer = gl.createBuffer();
-    // gl.bindBuffer(gl.ARRAY_BUFFER, this.positionBuffer);
-    // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
-
-    // this.normalBuffer = gl.createBuffer();
-    // gl.bindBuffer(gl.ARRAY_BUFFER, this.normalBuffer);
-    // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(normals), gl.STATIC_DRAW);
-
-    // this.texcoordBuffer = gl.createBuffer();
-    // gl.bindBuffer(gl.ARRAY_BUFFER, this.texcoordBuffer);
-    // gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(texcoords), gl.STATIC_DRAW);
-  }
-
   draw(programInfo) {
     const gl = this.gl;
 
@@ -169,6 +146,8 @@ class SceneObject {
       u_view: viewMatrix,
       u_projection: projectionMatrix,
       u_viewWorldPosition: cameraPosition,
+      u_lightWorldPosition: [controls.light_x, controls.light_y, controls.light_z],
+      u_lightColor: colorLight
     };
 
     webglUtils.setUniforms(programInfo, sharedUniforms);

@@ -73,9 +73,9 @@ function createGui() {
   gui.add(controls, "x", -10, 10, 0.1);
   gui.add(controls, "y", -10, 10, 1);
   gui.add(controls, "z", -10, 10, 1);
-  gui.add(controls, "light_x", -1, 1);
-  gui.add(controls, "light_y", -1, 1);
-  gui.add(controls, "light_z", -1, 1);
+  gui.add(controls, "light_x", -20, 20);
+  gui.add(controls, "light_y", -20, 20);
+  gui.add(controls, "light_z", -20, 20);
 
   gui.add(controls, "phi", 0, 180, 0.1);
   gui.add(controls, "theta", 0, 360, 1);
