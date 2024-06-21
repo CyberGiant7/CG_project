@@ -2,8 +2,8 @@ import { InputHandler } from "./InputHandler.js";
 
 class Scene {
   constructor(canvas_id, vertex_shader_id, fragment_shader_id) {
-    /** @type {SceneObject[]} */
-    this.objects = [];
+    /** @type {Object} */
+    this.objects = {};
     /** @type {HTMLCanvasElement} */
     this.canvas = document.getElementById(canvas_id);
     /** @type {WebGLRenderingContext} */
@@ -20,7 +20,7 @@ class Scene {
       z: 0,
       light_x: 0,
       light_y: 0,
-      light_z: -1,
+      light_z: 1,
       light_intensity: 1.0,
       phi: 20,
       theta: 80,
@@ -54,9 +54,9 @@ class Scene {
     gui.add(this.controls, "x", -10, 10, 0.1);
     gui.add(this.controls, "y", -10, 10, 1);
     gui.add(this.controls, "z", -10, 10, 1);
-    gui.add(this.controls, "light_x", -20, 20);
-    gui.add(this.controls, "light_y", -20, 20);
-    gui.add(this.controls, "light_z", -20, 20);
+    gui.add(this.controls, "light_x", -30, 30);
+    gui.add(this.controls, "light_y", -30, 30);
+    gui.add(this.controls, "light_z", -10, 30);
     gui.add(this.controls, "light_intensity", 0.1, 5.0, 0.1);
 
     gui.add(this.controls, "useNormalMap");

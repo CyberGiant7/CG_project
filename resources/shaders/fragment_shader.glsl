@@ -66,7 +66,6 @@ void main() {
       vec3 effectiveDiffuse = diffuse * diffuseMapColor.rgb * v_color.rgb;
       float effectiveOpacity = opacity * diffuseMapColor.a * v_color.a;
 
-            
       gl_FragColor = vec4(emissive +
             ambient * u_ambientLight +
             effectiveDiffuse * light * u_lightColor +

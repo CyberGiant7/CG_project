@@ -4,8 +4,10 @@ import { SceneObject } from "./SceneObject.js";
 async function main() {
   var scene = new Scene("canvas", "./resources/shaders/vertex_shader.glsl", "./resources/shaders/fragment_shader.glsl");
   console.log(scene);
-  // new SceneObject(scene, "data/computer/computer.obj", "data/computer/computer.mtl", [10,10,100]);
-  new SceneObject(scene, "data/room/room.obj", "data/room/room.mtl");
+  // new SceneObject("computer", scene, "data/computer/computer.obj", "data/computer/computer.mtl", [10,10,100]);
+  let light_position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z];
+  new SceneObject("light", scene, "data/light_bulb/Light_Bulb_Low_Poly.obj", "data/light_bulb/Light_Bulb_Low_Poly.mtl", light_position, [90,0,0], [2,2,2]);
+  new SceneObject("room", scene, "data/room/room.obj", "data/room/room.mtl");
   function render() {
     webglUtils.resizeCanvasToDisplaySize(scene.gl.canvas);
     scene.gl.viewport(0, 0, scene.gl.canvas.width, scene.gl.canvas.height);
@@ -15,9 +17,12 @@ async function main() {
 
     scene.gl.clear(scene.gl.COLOR_BUFFER_BIT | scene.gl.DEPTH_BUFFER_BIT);
 
-    scene.objects.forEach((object) => {
-      object.draw();
-    });
+    for (const [id, sceneObj] of Object.entries(scene.objects)) {
+      if (id == "light") {
+        sceneObj.position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z];
+      }
+      sceneObj.draw();
+    };
 
     requestAnimationFrame(render);
   }

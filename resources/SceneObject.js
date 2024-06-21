@@ -5,7 +5,7 @@ import { loadMeshAndMaterials } from "./meshLoader.js";
  * Represents a scene object in a 3D scene.
  */
 class SceneObject {
-  constructor(scene, sourceMesh, sourceMTL, position = [0, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1]) {
+  constructor(id, scene, sourceMesh, sourceMTL, position = [0, 0, 0], rotation = [0, 0, 0], scale = [1, 1, 1]) {
     /** @type {Scene} */
     this.scene = scene;
     /** @type {WebGLRenderingContext} */
@@ -18,9 +18,10 @@ class SceneObject {
     this.position = position;
     this.rotation = rotation;
     this.scale = scale;
+    this.id = id;
 
     this.loadMeshAndMaterials().then(() => {
-      this.scene.objects.push(this);
+      this.scene.objects[this.id] = this;
     });
   }
   async loadMeshAndMaterials() {
