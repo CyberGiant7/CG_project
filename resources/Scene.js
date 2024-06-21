@@ -26,6 +26,9 @@ class Scene {
       theta: 80,
       distance: 100,
       fov: 60,
+      useNormalMap: true,
+      useSpecularMap: true,
+      useGlobalLight: false,
     };
 
     this.gl.enable(this.gl.DEPTH_TEST);
@@ -55,6 +58,10 @@ class Scene {
     gui.add(this.controls, "light_y", -20, 20);
     gui.add(this.controls, "light_z", -20, 20);
     gui.add(this.controls, "light_intensity", 0.1, 5.0, 0.1);
+
+    gui.add(this.controls, "useNormalMap");
+    gui.add(this.controls, "useSpecularMap");
+    gui.add(this.controls, "useGlobalLight");
 
 
     gui.add(this.controls, "phi", 0, 180, 0.1);

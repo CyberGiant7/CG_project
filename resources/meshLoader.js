@@ -80,7 +80,8 @@ async function loadMeshAndMaterials(gl, sourceMesh, sourceMTL) {
       // we probably want to generate normals if there are none
       data.normal = { value: [0, 0, 1] };
     }
-
+ 
+    // Data contains the arrays for position, normal, texcoord, color, and tangent
     // create a buffer for each array by calling
     // gl.createBuffer, gl.bindBuffer, gl.bufferData
     const bufferInfo = webglUtils.createBufferInfoFromArrays(gl, data);

@@ -10,11 +10,11 @@ class SceneObject {
     this.scene = scene;
     /** @type {WebGLRenderingContext} */
     this.gl = scene.gl;
-    
+
     this.mesh = [];
     this.mesh.sourceMesh = sourceMesh;
     this.mesh.fileMTL = sourceMTL;
-    
+
     this.position = position;
     this.rotation = rotation;
     this.scale = scale;
@@ -25,11 +25,12 @@ class SceneObject {
   }
   async loadMeshAndMaterials() {
     this.mesh = await loadMeshAndMaterials(this.gl, this.mesh.sourceMesh, this.mesh.fileMTL);
+    console.log(this.mesh);
   }
 
   /**
    * Draws the scene object using the specified program information.
-   * 
+   *
    *
    */
   draw() {
@@ -74,7 +75,10 @@ class SceneObject {
       u_projection: projectionMatrix,
       u_viewWorldPosition: cameraPosition,
       u_lightWorldPosition: [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z],
-      u_lightColor: colorLight
+      u_lightColor: colorLight,
+      u_useNormalMap: scene.controls.useNormalMap,
+      u_useGlobalIllumination: scene.controls.useGlobalLight,
+      u_useSpecularMap: scene.controls.useSpecularMap,
     };
 
     webglUtils.setUniforms(scene.programInfo, sharedUniforms);
@@ -89,7 +93,7 @@ class SceneObject {
       webglUtils.setUniforms(
         scene.programInfo,
         {
-          u_world,
+          u_world: u_world,
           u_ambientLight: ambientLight,
         },
         material
@@ -100,11 +104,4 @@ class SceneObject {
   }
 }
 
-
-
-
-
-
-
-export { SceneObject};
-
+export { SceneObject };
