@@ -18,9 +18,9 @@ class Scene {
       x: 0,
       y: 0,
       z: 0,
-      light_x: 0,
-      light_y: 0,
-      light_z: 1,
+      light_x: -10,
+      light_y: 1,
+      light_z: 22,
       light_intensity: 1.0,
       phi: 20,
       theta: 80,
@@ -66,9 +66,9 @@ class Scene {
 
     gui.add(this.controls, "phi", 0, 180, 0.1);
     gui.add(this.controls, "theta", 0, 360, 1);
-    gui.add(this.controls, "distance", 0, 20, 1);
+    gui.add(this.controls, "distance", 1, 100, 1);
 
-    gui.add(this.controls, "fov", 0, 180);
+    gui.add(this.controls, "fov", 1, 170);
     return gui;
   }
 }

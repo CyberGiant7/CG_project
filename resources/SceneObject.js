@@ -31,15 +31,13 @@ class SceneObject {
 
   /**
    * Draws the scene object using the specified program information.
-   *
-   *
    */
   draw() {
     const gl = this.gl;
     const scene = this.scene;
 
-    const fieldOfViewRadians = degToRad(30);
-    const aspect = this.scene.gl.canvas.clientWidth / this.scene.gl.canvas.clientHeight;
+    const fieldOfViewRadians = degToRad(scene.controls.fov);
+    const aspect = scene.gl.canvas.clientWidth / scene.gl.canvas.clientHeight;
     const zmin = 0.1;
     let projectionMatrix = m4.perspective(fieldOfViewRadians, aspect, zmin, 10000);
 

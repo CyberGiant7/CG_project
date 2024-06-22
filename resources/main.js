@@ -8,6 +8,8 @@ async function main() {
   let light_position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z];
   new SceneObject("light", scene, "data/light_bulb/Light_Bulb_Low_Poly.obj", "data/light_bulb/Light_Bulb_Low_Poly.mtl", light_position, [90,0,0], [2,2,2]);
   new SceneObject("room", scene, "data/room/room.obj", "data/room/room.mtl");
+  new SceneObject("custom_pic", scene, "data/custom_pic/custom_pic.obj", "data/custom_pic/custom_pic.mtl");
+
   function render() {
     webglUtils.resizeCanvasToDisplaySize(scene.gl.canvas);
     scene.gl.viewport(0, 0, scene.gl.canvas.width, scene.gl.canvas.height);
