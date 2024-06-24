@@ -1,0 +1,150 @@
+# Blender MTL File: 'room.blend'
+# Material Count: 11
+
+newmtl Bath.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Bath_low_UV_checker.001_Normal.png
+map_Kd texture\Bath_low_UV_checker.001_BaseColor.png
+map_Ns texture\Bath_low_UV_checker.001_Roughness.png
+refl texture\Bath_low_UV_checker.001_Metallic.png
+
+newmtl Bathtube.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Bathtube_low_Bathtube_Normal.png
+map_Kd texture\Bathtube_low_Bathtube_BaseColor.png
+map_Ns texture\Bathtube_low_Bathtube_Roughness.png
+refl texture\Bathtube_low_Bathtube_Metallic.png
+
+newmtl Candle.001
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Candle_low_Candle_Normal.png
+map_Kd texture\Candle_low_Candle_BaseColor.png
+map_Ke texture\Candle_low_Candle_Emissive.png
+map_Ns texture\Candle_low_Candle_Roughness.png
+refl texture\Candle_low_Candle_Metallic.png
+
+newmtl Cups.001
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Cups_low_Cups_Normal.png
+map_Kd texture\Cups_low_Cups_BaseColor.png
+map_Ns texture\Cups_low_Cups_Roughness.png
+
+newmtl Door_and_windows
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\WinDoorsheet_LOW_Wall_Trim_Normal.png
+map_Kd texture\WinDoorsheet_LOW_Wall_Trim_BaseColor.png
+map_Ns texture\WinDoorsheet_LOW_Wall_Trim_Roughness.png
+map_d texture\Opasity.png
+refl texture\WinDoorsheet_LOW_Wall_Trim_Metallic.png
+
+newmtl Fabric.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Fabric_Fabric_Normal.png
+map_Kd texture\Fabric_Fabric_BaseColor.png
+map_Ns texture\Fabric_Fabric_Roughness.png
+
+newmtl Floor.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Floor_normal.png
+map_Kd texture\Floor_basecolor.png
+map_Ns texture\Floor_roughness.png
+refl texture\Floor_metallic.png
+
+newmtl Frames.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Frame_low_Frames_Normal.png
+map_Kd texture\Frame_low_Frames_BaseColor.png
+map_Ns texture\Frame_low_Frames_Roughness.png
+refl texture\Frame_low_Frames_Metallic.png
+
+newmtl Glass.001
+Ns 835.735539
+Ka 1.000000 1.000000 1.000000
+Kd 0.804547 0.883961 1.000000
+Ks 1.000000 1.000000 1.000000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+
+newmtl Selling_Bump.001
+Ns 225.000000
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Selling_normal.png
+map_Kd texture\Selling_basecolor.png
+map_Ns texture\Selling_roughness.png
+
+newmtl Wall_Trim.001
+Ns 323.999994
+Ka 1.000000 1.000000 1.000000
+Kd 0.800000 0.800000 0.800000
+Ks 0.500000 0.500000 0.500000
+Ke 0.000000 0.000000 0.000000
+Ni 1.450000
+d 1.000000
+illum 2
+map_Bump texture\Wall_trim_normal.png
+map_Kd texture\Wall_trim_basecolor.png
+map_Ns texture\Wall_trim_roughness.png
