@@ -137,6 +137,7 @@ class InputHandler {
       this.old_y = e.pageY;
       e.preventDefault();
       this.gui.updateDisplay();
+<<<<<<< HEAD
       return;
     }
     if (!this.drag) return false;
@@ -168,3 +169,18 @@ class InputHandler {
 }
 
 export { InputHandler };
+=======
+    }
+  
+    mouseWheel(e, controls) {
+      var delta = Math.max(-1, Math.min(1, e.wheelDelta || -e.detail));
+      if (controls.distance - delta > 0) {
+        controls.distance -= delta;
+      }
+      e.preventDefault();
+      this.gui.updateDisplay();
+    }
+  }
+
+  export { InputHandler };
+>>>>>>> 942bdf748cf328bf470d0b2a83ef48810df55a8b
