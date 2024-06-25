@@ -20,7 +20,7 @@ uniform float opacity;
 uniform vec3 u_lightDirection;
 uniform vec3 u_ambientLight;
 
-uniform bool u_useGlobalIllumination;
+uniform bool u_useDirectionalIllumination;
 uniform bool u_useNormalMap;
 uniform bool u_useSpecularMap;
 
@@ -41,9 +41,13 @@ void main() {
       float light;
       float specularLight;
 
-      if(u_useGlobalIllumination) {
-            light = dot(u_lightDirection, normal) * .5 + .5;
-            specularLight = clamp(dot(normal, u_lightDirection), 0.0, 1.0);
+      if(u_useDirectionalIllumination) {
+            light = dot(normal, u_lightDirection) * .5 + .5;
+
+            vec3 surfaceToViewDirection = normalize(v_surfaceToView);
+            vec3 halfVector = normalize(u_lightDirection + surfaceToViewDirection);
+
+            specularLight = clamp(dot(normal, halfVector), 0.0, 1.0);
       } else {
             vec3 surfaceToLightDirection = normalize(v_surfaceToLight);
             vec3 surfaceToViewDirection = normalize(v_surfaceToView);
@@ -65,6 +69,10 @@ void main() {
       vec4 diffuseMapColor = texture2D(diffuseMap, v_texcoord);
       vec3 effectiveDiffuse = diffuse * diffuseMapColor.rgb * v_color.rgb;
       float effectiveOpacity = opacity * diffuseMapColor.a * v_color.a;
+
+      if(effectiveOpacity < 0.3){
+            discard;
+      }
 
       gl_FragColor = vec4(emissive +
             ambient * u_ambientLight +

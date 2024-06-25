@@ -30,15 +30,15 @@ void main() {
   v_texcoord = a_texcoord;
   v_color = a_color;
 
-    // compute the world position of the surface
+  // compute the world position of the surface
   vec3 surfaceWorldPosition = (u_world * a_position).xyz;
 
-    // compute the vector of the surface to the light
-    // and pass it to the fragment shader
+  // compute the vector of the surface to the light
+  // and pass it to the fragment shader
   v_surfaceToLight = u_lightWorldPosition - surfaceWorldPosition;
 
-    // compute the vector of the surface to the view/camera
-    // and pass it to the fragment shader
+  // compute the vector of the surface to the view/camera
+  // and pass it to the fragment shader
   v_surfaceToView = normalize(u_viewWorldPosition - surfaceWorldPosition);
 
 }

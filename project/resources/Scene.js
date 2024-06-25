@@ -21,20 +21,27 @@ class Scene {
       light_x: -10,
       light_y: 1,
       light_z: 22,
+      light_color: [255, 255, 255],
+
+      directional_light_x: 0,
+      directional_light_y: 0,
+      directional_light_z: -1,
+
       light_intensity: 1.0,
-      phi: 20,
-      theta: 80,
+      phi: 30,
+      theta: 180,
       distance: 100,
       fov: 60,
       useNormalMap: true,
       useSpecularMap: true,
-      useGlobalLight: false,
+      useDirectionalLight: false,
     };
 
     this.gl.enable(this.gl.DEPTH_TEST);
+
     // enabling alpha blending
     this.gl.enable(this.gl.BLEND);
-    this.gl.blendFunc(this.gl.SRC_ALPHA, this.gl.ONE_MINUS_SRC_ALPHA);
+    this.gl.blendFunc(this.gl.ONE, this.gl.ONE_MINUS_SRC_ALPHA);
 
     this.gl.viewport(0, 0, this.gl.canvas.width, this.gl.canvas.height);
 
@@ -51,25 +58,40 @@ class Scene {
 
   createGui() {
     let gui = new dat.GUI();
-    gui.add(this.controls, "x", -20, 20, 1);
-    gui.add(this.controls, "y", -20, 20, 1);
-    gui.add(this.controls, "z", -20, 20, 1);
+    let scene_controls = gui.addFolder("Scene Controls");
+    scene_controls.open();
+    scene_controls.add(this.controls, "x", -20, 20, 1);
+    scene_controls.add(this.controls, "y", -20, 20, 1);
+    scene_controls.add(this.controls, "z", -20, 20, 1);
+    scene_controls.add(this.controls, "phi", 0, 180, 0.1);
+    scene_controls.add(this.controls, "theta", 0, 360, 1);
+    scene_controls.add(this.controls, "distance", 1, 100, 1);
+    scene_controls.add(this.controls, "fov", 1, 170);
 
-    gui.add(this.controls, "light_x", -30, 30);
-    gui.add(this.controls, "light_y", -30, 30);
-    gui.add(this.controls, "light_z", -10, 30);
+    let light_controls = gui.addFolder("Light Controls");
+    light_controls.open();
 
-    gui.add(this.controls, "light_intensity", 0.1, 5.0, 0.1);
+    light_controls.add(this.controls, "light_intensity", 0.1, 5.0, 0.1);
+    light_controls.addColor(this.controls, "light_color")
 
-    gui.add(this.controls, "phi", 0, 180, 0.1);
-    gui.add(this.controls, "theta", 0, 360, 1);
-    gui.add(this.controls, "distance", 1, 100, 1);
+    let spotlight_controls = light_controls.addFolder("Spotlight Controls");
+    spotlight_controls.add(this.controls, "light_x", -30, 30);
+    spotlight_controls.add(this.controls, "light_y", -30, 30);
+    spotlight_controls.add(this.controls, "light_z", -10, 30);
+    
 
-    gui.add(this.controls, "useNormalMap");
-    gui.add(this.controls, "useSpecularMap");
-    gui.add(this.controls, "useGlobalLight");
+    let directional_light_controls = light_controls.addFolder("Directional Light Controls");
+    directional_light_controls.add(this.controls, "useDirectionalLight");
+    directional_light_controls.add(this.controls, "directional_light_x", -1, 1);
+    directional_light_controls.add(this.controls, "directional_light_y", -1, 1);
+    directional_light_controls.add(this.controls, "directional_light_z", -1, 1);
 
-    gui.add(this.controls, "fov", 1, 170);
+    let advanced_rendering = gui.addFolder("Advanced Rendering");
+    advanced_rendering.open();
+    advanced_rendering.c
+    advanced_rendering.add(this.controls, "useNormalMap");
+    advanced_rendering.add(this.controls, "useSpecularMap");
+
     return gui;
   }
 }

@@ -45,45 +45,49 @@ class SceneObject {
     const target = [0, 0, 0];
     let cameraMatrix = m4.identity();
 
-    projectionMatrix = m4.translate(projectionMatrix, scene.controls.x, scene.controls.y, scene.controls.z);
-
     let cameraPosition = [
       scene.controls.distance * Math.sin(degToRad(scene.controls.phi)) * Math.cos(degToRad(scene.controls.theta)),
       scene.controls.distance * Math.sin(degToRad(scene.controls.phi)) * Math.sin(degToRad(scene.controls.theta)),
       scene.controls.distance * Math.cos(degToRad(scene.controls.phi)),
-    ];
+    ];    
 
     cameraMatrix = m4.lookAt(cameraPosition, target, up);
-    
+    cameraMatrix = m4.translate(cameraMatrix, scene.controls.x, scene.controls.y, scene.controls.z);
 
+    cameraPosition = [cameraMatrix[12], cameraMatrix[13], cameraMatrix[14]];
+
+    
     let viewMatrix = m4.inverse(cameraMatrix);
     viewMatrix = m4.translate(viewMatrix, this.position[0], this.position[1], this.position[2]);
     viewMatrix = m4.xRotate(viewMatrix, degToRad(this.rotation[0]));
     viewMatrix = m4.yRotate(viewMatrix, degToRad(this.rotation[1]));
     viewMatrix = m4.zRotate(viewMatrix, degToRad(this.rotation[2]));
     viewMatrix = m4.scale(viewMatrix, this.scale[0], this.scale[1], this.scale[2]);
+    
 
     const ambientLight = [0, 0, 0];
-    var colorLight = [1.0, 1.0, 1.0];
+    var colorLight = [scene.controls.light_color[0] / 255, scene.controls.light_color[1] / 255, scene.controls.light_color[2] / 255];
 
     colorLight = colorLight.map((c) => c * scene.controls.light_intensity);
 
     gl.useProgram(scene.programInfo.program);
 
     const sharedUniforms = {
-      u_lightDirection: m4.normalize([scene.controls.light_x, scene.controls.light_y, scene.controls.light_z]),
+      u_lightDirection: m4.normalize([scene.controls.directional_light_x, scene.controls.directional_light_y, scene.controls.directional_light_z]),
       u_view: viewMatrix,
       u_projection: projectionMatrix,
       u_viewWorldPosition: cameraPosition,
       u_lightWorldPosition: [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z],
       u_lightColor: colorLight,
       u_useNormalMap: scene.controls.useNormalMap,
-      u_useGlobalIllumination: scene.controls.useGlobalLight,
+      u_useDirectionalIllumination: scene.controls.useDirectionalLight,
       u_useSpecularMap: scene.controls.useSpecularMap,
     };
 
     webglUtils.setUniforms(scene.programInfo, sharedUniforms);
 
+    // compute the world matrix once since all parts
+    // are at the same space.
     let u_world = m4.identity();
     u_world = m4.scale(u_world, 10, 10, 10);
 

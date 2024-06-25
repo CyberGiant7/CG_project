@@ -1,13 +1,20 @@
 import { Scene } from "./Scene.js";
 import { SceneObject } from "./SceneObject.js";
 
-
 function main() {
   var scene = new Scene("canvas", "./resources/shaders/vertex_shader.glsl", "./resources/shaders/fragment_shader.glsl");
   console.log(scene);
   // new SceneObject("computer", scene, "data/computer/computer.obj", "data/computer/computer.mtl", [10,10,100]);
   let light_position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z];
-  new SceneObject("light", scene, "data/light_bulb/Light_Bulb_Low_Poly.obj", "data/light_bulb/Light_Bulb_Low_Poly.mtl", light_position, [90,0,0], [2,2,2]);
+  new SceneObject(
+    "light",
+    scene,
+    "data/light_bulb/Light_Bulb_Low_Poly.obj",
+    "data/light_bulb/Light_Bulb_Low_Poly.mtl",
+    light_position,
+    [90, 0, 0],
+    [2, 2, 2]
+  );
   new SceneObject("room", scene, "data/room/room.obj", "data/room/room.mtl");
   new SceneObject("custom_pic", scene, "data/custom_pic/custom_pic.obj", "data/custom_pic/custom_pic.mtl");
 
@@ -22,10 +29,10 @@ function main() {
 
     for (const [id, sceneObj] of Object.entries(scene.objects)) {
       if (id == "light") {
-        sceneObj.position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z];
+        sceneObj.position = [scene.controls.light_x, scene.controls.light_y, scene.controls.light_z - 5];
       }
       sceneObj.draw();
-    };
+    }
 
     requestAnimationFrame(render);
   }
