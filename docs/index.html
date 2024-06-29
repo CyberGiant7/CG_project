@@ -5,595 +5,668 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+          integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/652c1efac6.js" crossorigin="anonymous"></script>
     <title>Leonardo Dessì - Computer Graphics Project Documentation</title>
 </head>
 
 <body>
-    <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
-        <div class="position-sticky">
-            <div class="list-group list-group-flush mx-3 mt-4">
-                <ul class="collapse show list-group list-group-flush">
-                    <li class="list-group-item py-1"><a href="#introduction" type="button" class="text-reset"
-                            onclick="toggleSidebar()">Introduction</a></li>
-                    <li class="list-group-item py-1"><a href="#project_structure" type="button" class="text-reset"
-                            onclick="toggleSidebar()">Project Structure</a></li>
-                    <li class="list-group-item py-1"><a href="#execution_pipeline" type="button" class="text-reset"
-                            onclick="toggleSidebar()">Execution Pipeline</a></li>
-                    <li class="list-group-item py-1"><a href="#files_in_detail" type="button" class="text-reset"
-                            onclick="toggleSidebar()">Files in Detail</a></li>
-                    <li class="list-group-item py-1"><a href="#shader" type="button" class="text-reset"
-                            onclick="toggleSidebar()">Shaders</a></li>
-                    <li class="list-group-item py-1"><a href="#gui_controls" type="button" class="text-reset"
-                            onclick="toggleSidebar()">GUI controls</a></li>
-                    <li class="list-group-item py-1"><a href="#3d_models" type="button" class="text-reset"
-                            onclick="toggleSidebar()">3D models</a></li>
-                    <li class="list-group-item py-1"><a href="#references" type="button" class="text-reset"
-                            onclick="toggleSidebar()">References</a></li>
-                </ul>
-            </div>
+<nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+    <div class="position-sticky">
+        <div class="list-group list-group-flush mx-3 mt-4">
+            <ul class="collapse show list-group list-group-flush">
+                <li class="list-group-item py-1"><a href="#introduction" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">Introduction</a></li>
+                <li class="list-group-item py-1"><a href="#project_structure" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">Project Structure</a></li>
+                <li class="list-group-item py-1"><a href="#execution_pipeline" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">Execution Pipeline</a></li>
+                <li class="list-group-item py-1"><a href="#files_in_detail" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">Files in Detail</a></li>
+                <li class="list-group-item py-1"><a href="#shader" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">Shaders</a></li>
+                <li class="list-group-item py-1"><a href="#gui_controls" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">GUI controls</a></li>
+                <li class="list-group-item py-1"><a href="#3d_models" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">3D models</a></li>
+                <li class="list-group-item py-1"><a href="#references" type="button" class="text-reset"
+                                                    onclick="toggleSidebar()">References</a></li>
+            </ul>
         </div>
-    </nav>
-    <nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
-        <div class="container-fluid"><button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+    </div>
+</nav>
+<nav id="main-navbar" class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                 data-bs-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="true"
                 aria-label="Toggle navigation"><i class="fas fa-bars"></i></button>
-            <h2 style="text-align:center">Computer Graphics Project</h2>
-        </div>
-    </nav>
-    <main style="margin-top:58px;margin-bottom:58px">
-        <div class="container">
-            <div class="row mt-3">
-                <div class="col">
-                    <h3 style="text-align:center">3D Scene Rendering Application</h3>
-                    <p style="text-align:center">Student: Leonardo Dessì</p>
-                </div>
+        <h2 style="text-align:center">Computer Graphics Project</h2>
+    </div>
+</nav>
+<main style="margin-top:58px;margin-bottom:58px">
+    <div class="container">
+        <div class="row mt-3">
+            <div class="col">
+                <h3 style="text-align:center">3D Scene Rendering Application</h3>
+                <p style="text-align:center">Student: Leonardo Dessì</p>
             </div>
-            <div>
-                <div class="container">
-                    <div class="row" id="introduction">
-                        <div class="col">
-                            <h2>Introduction</h2>
-                            <p style="text-align:justify">This project is developed as part of the<strong>Computer
-                                    Graphics course</strong>of the Master's degree in Computer Science at
-                                the<strong>University of Bologna</strong>in the academic year 2023/2024. The project is
-                                developed by the student<strong>Leonardo Dessì</strong>.<br>The goal of the project is
-                                to apply the concepts and techniques learned in the course to create a 3D scene
-                                rendering application using WebGL. The application is built using HTML, CSS, and
-                                JavaScript, with the WebGL for rendering 3D graphics. The project includes features such
-                                as object creation, transformation, lighting, texturing, and normal mapping, as well as
-                                interactive controls for the user to manipulate the scene. The application is designed
-                                to be user-friendly and intuitive, with a clean interface that allows for easy
-                                navigation and interaction.</p>
-                        </div>
+        </div>
+        <div>
+            <div class="container">
+                <div class="row" id="introduction">
+                    <div class="col">
+                        <h2>Introduction</h2>
+                        <p style="text-align:justify">This project is developed as part of the <strong> Computer
+                            Graphics course </strong> of the Master's degree in Computer Science at
+                            the <strong> University of Bologna</strong> in the academic year 2023/2024. The project is
+                            developed by the student <strong>Leonardo Dessì</strong>.<br>The goal of the project is
+                            to apply the concepts and techniques learned in the course to create a 3D scene
+                            rendering application using WebGL. The application is built using HTML, CSS, and
+                            JavaScript, with the WebGL for rendering 3D graphics. The project includes features such
+                            as object creation, transformation, lighting, texturing, and normal mapping, as well as
+                            interactive controls for the user to manipulate the scene. The application is designed
+                            to be user-friendly and intuitive, with a clean interface that allows for easy
+                            navigation and interaction.</p>
                     </div>
-                    <div class="row" id="project_structure">
-                        <div class="col">
-                            <h2>Project Structure</h2>
-                            <p>The project is organized into several JavaScript files, each responsible for different
-                                aspects of the 3D scene rendering process.<br>The project structure is as follows:</p>
+                </div>
+                <div class="row" id="project_structure">
+                    <div class="col">
+                        <h2>Project Structure</h2>
+                        <p>The project is organized into several JavaScript files, each responsible for different
+                            aspects of the 3D scene rendering process.<br>The project structure is as follows:</p>
+                        <ul>
+                            <li><strong>docs</strong> - Contains documentation or additional resources for the
+                                project, such as an HTML file that serves as a landing page or documentation entry
+                                point.
+                            </li>
+                            <li><strong>project</strong> - Contains the main project files, including the HTML, CSS,
+                                and JavaScript files.
+                            </li>
                             <ul>
-                                <li><strong>docs</strong>- Contains documentation or additional resources for the
-                                    project, such as an HTML file that serves as a landing page or documentation entry
-                                    point.</li>
-                                <li><strong>project</strong>- Contains the main project files, including the HTML, CSS,
-                                    and JavaScript files.</li>
+                                <li><strong>data</strong> - Contains the OBJ and MTL files for the 3D models used in
+                                    the scene.
+                                </li>
+                                <li><strong>resources</strong> - Contains the main JavaScript files for the project.
+                                </li>
                                 <ul>
-                                    <li><strong>data</strong>- Contains the OBJ and MTL files for the 3D models used in
-                                        the scene.</li>
-                                    <li><strong>resources</strong>- Contains the main JavaScript files for the project.
+                                    <li><strong>libraries</strong> - Contains various JavaScript libraries used in
+                                        the project, such as jQuery, WebGL utilities, a matrix manipulation library
+                                        (m4.js), and dat.gui for creating graphical user interfaces.
                                     </li>
-                                    <ul>
-                                        <li><strong>libraries</strong>- Contains various JavaScript libraries used in
-                                            the project, such as jQuery, WebGL utilities, a matrix manipulation library
-                                            (m4.js), and dat.gui for creating graphical user interfaces.</li>
-                                        <li><strong>shaders</strong>- Contains the vertex and fragment shaders used for
-                                            rendering the 3D scene.</li>
-                                        <li><strong>style</strong>- Contains CSS stylesheets for the project, including
-                                            styles for dat.gui and the main style.css.</li>
-                                    </ul>
+                                    <li><strong>shaders</strong> - Contains the vertex and fragment shaders used for
+                                        rendering the 3D scene.
+                                    </li>
+                                    <li><strong>style</strong> - Contains CSS stylesheets for the project, including
+                                        styles for dat.gui and the main style.css.
+                                    </li>
                                 </ul>
                             </ul>
-                            <p>The main components are:</p>
-                            <ul>
-                                <li><a href="../project/resources/main.js" target="_blank">main.js</a>: This is the
-                                    entry point of the application. It initializes the scene and objects, and starts the
-                                    rendering loop.</li>
-                                <li><a href="../project/resources/Scene.js" target="_blank">Scene.js</a>: This file
-                                    defines the Scene class, which handles the setup and management of the WebGL
-                                    context, shaders, and scene controls.</li>
-                                <li><a href="../project/resources/SceneObject.js" target="_blank">SceneObject.js</a>:
-                                    This file defines the SceneObject class, representing individual objects within the
-                                    scene. It handles loading the object's mesh and materials and rendering the object.
-                                </li>
-                                <li><a href="../project/resources/InputHandler.js" target="_blank">InputHandler.js</a>:
-                                    This file manages user inputs, including mouse, keyboard and touch interactions, to
-                                    control the scene's camera and object properties.</li>
-                                <li><a href="../project/resources/mathUtils.js" target="_blank">mathUtils.js</a>: A
-                                    utility file that provides mathematical functions used in the project, such as
-                                    conversions between degrees and radians, and vector operations.</li>
-                                <li><a href="../project/resources/meshLoader.js" target="_blank">meshLoader.js</a>: A
-                                    utility file that loads 3D models in OBJ format and converts them into a format that
-                                    can be used by the application.</li>
-                                <li><a href="../project/resources/parsers.js" target="_blank">parsers.js</a>: A utility
-                                    file that contains parser of .obj and .mtl files.</li>
-                                <li><a href="../project/resources/textureUtils.js" target="_blank">textureUtils.js</a>:
-                                    A utility file that loads image textures and normal maps for objects in the scene.
-                                </li>
-                            </ul>
-                        </div>
+                        </ul>
+                        <p>The main components are:</p>
+                        <ul>
+                            <li><a href="../project/resources/main.js" target="_blank">main.js</a>: This is the
+                                entry point of the application. It initializes the scene and objects, and starts the
+                                rendering loop.
+                            </li>
+                            <li><a href="../project/resources/Scene.js" target="_blank">Scene.js</a>: This file
+                                defines the Scene class, which handles the setup and management of the WebGL
+                                context, shaders, and scene controls.
+                            </li>
+                            <li><a href="../project/resources/SceneObject.js" target="_blank">SceneObject.js</a>:
+                                This file defines the SceneObject class, representing individual objects within the
+                                scene. It handles loading the object's mesh and materials and rendering the object.
+                            </li>
+                            <li><a href="../project/resources/InputHandler.js" target="_blank">InputHandler.js</a>:
+                                This file manages user inputs, including mouse, keyboard and touch interactions, to
+                                control the scene's camera and object properties.
+                            </li>
+                            <li><a href="../project/resources/mathUtils.js" target="_blank">mathUtils.js</a>: A
+                                utility file that provides mathematical functions used in the project, such as
+                                conversions between degrees and radians, and vector operations.
+                            </li>
+                            <li><a href="../project/resources/meshLoader.js" target="_blank">meshLoader.js</a>: A
+                                utility file that loads 3D models in OBJ format and converts them into a format that
+                                can be used by the application.
+                            </li>
+                            <li><a href="../project/resources/parsers.js" target="_blank">parsers.js</a>: A utility
+                                file that contains parser of .obj and .mtl files.
+                            </li>
+                            <li><a href="../project/resources/textureUtils.js" target="_blank">textureUtils.js</a>:
+                                A utility file that loads image textures and normal maps for objects in the scene.
+                            </li>
+                        </ul>
                     </div>
-                    <div class="row" id="execution_pipeline">
-                        <div class="col">
-                            <h2>Execution pipeline</h2>
-                            <p>The execution pipeline of the application can be broken down into several stages, each
-                                responsible for different aspects of the 3D scene rendering process. The following steps
-                                outline the key stages of the pipeline:</p>
-                            <h5 id="1-initialization-mainjs">1. Initialization (<a href="../project/resources/main.js"
-                                    target="_blank"><code>main.js</code></a>)</h5>
-                            <ul>
-                                <li>The<code>main</code>function is the entry point of the application.</li>
-                                <li>A<code>Scene</code>object is created with references to the canvas element and
-                                    shader files. This object is responsible for setting up the WebGL context,
-                                    initializing rendering settings, and managing scene controls.</li>
-                                <li>Multiple<code>SceneObject</code>instances are created, each representing an object
-                                    in the scene. These objects are initialized with their respective mesh data (OBJ
-                                    files), material data (MTL files), positions, rotations, and scales.</li>
-                                <li>The<code>SceneObject</code>constructor asynchronously loads the mesh and material
-                                    data, then adds the object to the<code>Scene</code>'s object collection.</li>
-                            </ul>
-                            <h5 id="2-scene-and-object-setup-scenejs-and-sceneobjectjs">2. Scene and object setup (<a
-                                    href="../project/resources/SceneObject.js"
-                                    target="_blank"><code>SceneObject.js</code></a>)</h5>
-                            <ul>
-                                <li>The<code>Scene</code>constructor initializes WebGL context settings, such as
-                                    enabling depth testing and blending, setting the viewport, and compiling shaders.
-                                </li>
-                                <li>It also sets up a GUI for controlling various parameters like object positions,
-                                    light settings, and rendering options.</li>
-                                <li>Each<code>Scene</code>loads its mesh and material data, prepares it for rendering,
-                                    and registers itself with the<code>Scene</code>.</li>
-                            </ul>
-                            <h5 id="3-rendering-loop-mainjs">3. Rendering loop (<a href="../project/resources/main.js"
-                                    target="_blank"><code>main.js</code></a>)</h5>
-                            <ul>
-                                <li>The<code>render</code>function is a loop that continuously updates and renders the
-                                    scene.</li>
-                                <li>It adjusts the canvas size to the display size, sets the viewport, and clears the
-                                    color and depth buffers.</li>
-                                <li>For each<code>SceneObject</code>in the<code>Scene</code>, it updates specific
-                                    properties (like the light position) and calls the<code>draw</code>method.</li>
-                            </ul>
-                            <h5 id="4-drawing-objects-sceneobjectjs">4. Drawing objects (<a
-                                    href="../project/resources/SceneObject.js"
-                                    target="_blank"><code>SceneObject.js</code></a>)</h5>
-                            <ul>
-                                <li>The<code>draw</code>method of each<code>SceneObject</code>calculates the necessary
-                                    matrices for rendering (projection, view, and model matrices) based on the scene's
-                                    camera and control settings.</li>
-                                <li>It sets up the lighting and material properties, binds the appropriate buffers, and
-                                    issues the draw call to render the object.</li>
-                                <li>This process involves setting WebGL uniforms and attributes, and finally drawing the
-                                    geometry using the vertex and fragment shaders.</li>
-                            </ul>
-                            <h5 id="5-shaders-vertex_shaderglsl-and-fragment_shaderglsl">5. Shaders (<a
-                                    href="../project/resources/shaders/vertex_shader.glsl"
-                                    target="_blank"><code>vertex_shader.glsl</code></a>&<a
-                                    href="../project/resources/shaders/fragment_shader.glsl"
-                                    target="_blank"><code>fragment_shader.glsl</code></a>)</h5>
-                            <ul>
-                                <li>The vertex shader processes each vertex of the object, applying transformations and
-                                    passing data (like normals and texture coordinates) to the fragment shader.</li>
-                                <li>The fragment shader calculates the final color of each pixel, taking into account
-                                    lighting, material properties, and textures.</li>
-                            </ul>
-                            <p>The execution pipeline starts with initialization, where the scene and objects are set
-                                up. It then enters a rendering loop, where each object is drawn on the screen using
-                                WebGL. This involves vertex transformation, lighting calculation, and pixel
-                                rasterization based on shader logic. WebGL context settings and the continuous rendering
-                                update cycle handled by<code>requestAnimationFrame</code>.
-                        </div>
+                </div>
+                <div class="row" id="execution_pipeline">
+                    <div class="col">
+                        <h2>Execution pipeline</h2>
+                        <p>The execution pipeline of the application can be broken down into several stages, each
+                            responsible for different aspects of the 3D scene rendering process. The following steps
+                            outline the key stages of the pipeline:</p>
+                        <h5 id="1-initialization-mainjs">1. Initialization (<a href="../project/resources/main.js"
+                                                                               target="_blank"><code>main.js</code></a>)
+                        </h5>
+                        <ul>
+                            <li>The <code>main</code> function is the entry point of the application.</li>
+                            <li>A <code>Scene</code> object is created with references to the canvas element and
+                                shader files. This object is responsible for setting up the WebGL context,
+                                initializing rendering settings, and managing scene controls.
+                            </li>
+                            <li>Multiple <code>SceneObject</code> instances are created, each representing an object
+                                in the scene. These objects are initialized with their respective mesh data (OBJ
+                                files), material data (MTL files), positions, rotations, and scales.
+                            </li>
+                            <li>The SceneObject</code>constructor asynchronously loads the mesh and material
+                                data, then adds the object to the <code> Scene</code>'s object collection.
+                            </li>
+                        </ul>
+                        <h5 id="2-scene-and-object-setup-scenejs-and-sceneobjectjs">2. Scene and object setup (<a
+                                href="../project/resources/SceneObject.js"
+                                target="_blank"><code>SceneObject.js</code></a>)</h5>
+                        <ul>
+                            <li>The <code>Scene</code> constructor initializes WebGL context settings, such as
+                                enabling depth testing and blending, setting the viewport, and compiling shaders.
+                            </li>
+                            <li>It also sets up a GUI for controlling various parameters like object positions,
+                                light settings, and rendering options.
+                            </li>
+                            <li>Each <code>Scene</code> loads its mesh and material data, prepares it for rendering,
+                                and registers itself with the <code>Scene</code>.
+                            </li>
+                        </ul>
+                        <h5 id="3-rendering-loop-mainjs">3. Rendering loop (<a href="../project/resources/main.js"
+                                                                               target="_blank"><code>main.js</code></a>)
+                        </h5>
+                        <ul>
+                            <li>The <code>render</code> function is a loop that continuously updates and renders the
+                                scene.
+                            </li>
+                            <li>It adjusts the canvas size to the display size, sets the viewport, and clears the
+                                color and depth buffers.
+                            </li>
+                            <li>For each <code>SceneObject</code> in the <code>Scene</code>, it updates specific
+                                properties (like the light position) and calls the <code>draw</code> method.
+                            </li>
+                        </ul>
+                        <h5 id="4-drawing-objects-sceneobjectjs">4. Drawing objects (<a
+                                href="../project/resources/SceneObject.js"
+                                target="_blank"><code>SceneObject.js</code></a>)</h5>
+                        <ul>
+                            <li>The <code>draw</code> method of each <code>SceneObject</code> calculates the necessary
+                                matrices for rendering (projection, view, and model matrices) based on the scene's
+                                camera and control settings.
+                            </li>
+                            <li>It sets up the lighting and material properties, binds the appropriate buffers, and
+                                issues the draw call to render the object.
+                            </li>
+                            <li>This process involves setting WebGL uniforms and attributes, and finally drawing the
+                                geometry using the vertex and fragment shaders.
+                            </li>
+                        </ul>
+                        <h5 id="5-shaders-vertex_shaderglsl-and-fragment_shaderglsl">5. Shaders (<a
+                                href="../project/resources/shaders/vertex_shader.glsl"
+                                target="_blank"><code>vertex_shader.glsl</code></a>&<a
+                                href="../project/resources/shaders/fragment_shader.glsl"
+                                target="_blank"><code>fragment_shader.glsl</code></a>)</h5>
+                        <ul>
+                            <li>The vertex shader processes each vertex of the object, applying transformations and
+                                passing data (like normals and texture coordinates) to the fragment shader.
+                            </li>
+                            <li>The fragment shader calculates the final color of each pixel, taking into account
+                                lighting, material properties, and textures.
+                            </li>
+                        </ul>
+                        <p>The execution pipeline starts with initialization, where the scene and objects are set
+                            up. It then enters a rendering loop, where each object is drawn on the screen using
+                            WebGL. This involves vertex transformation, lighting calculation, and pixel
+                            rasterization based on shader logic. WebGL context settings and the continuous rendering
+                            update cycle handled by <code>requestAnimationFrame</code>.
                     </div>
-                    <div class="row" id="files_in_detail">
-                        <div class="col">
-                            <h3>Files in Detail</h3>
-                            <p>The following is a detailed description of the key files in the project:</p>
-                            <ol>
-                                <li>
-                                    <h5 id="mainjs"><tt>main.js</tt></h5>
-                                    <p>The code is structured into a main function that initializes the scene, adds
-                                        objects to it, and defines a rendering loop to continuously draw the scene.</p>
-                                    <ul>
-                                        <li><strong>Initialization of the Scene</strong>: At the beginning of the main
-                                            function, a new Scene object is created with parameters specifying the HTML
-                                            canvas element ID ("canvas") and paths to the vertex and fragment shader
-                                            files. This Scene object is responsible for managing the WebGL context,
-                                            shaders, and the overall setup required for rendering the 3D scene. The
-                                            scene object is then logged to the console for debugging purposes.</li>
-                                        <li><strong>Creation of scene objects</strong>: The code proceeds to define the
-                                            position of a light source by retrieving the light's x, y, and z coordinates
-                                            from the scene's controls. A SceneObject representing the light is then
-                                            created with its model and material files specified, along with its initial
-                                            position, rotation, and scale. Following this, additional SceneObject
-                                            instances for a room and a custom picture are created with their respective
-                                            model and material files. These objects are added to the scene to be
-                                            rendered.</li>
-                                        <li><strong>Rendering loop</strong>: The render function defined within main is
-                                            the core of the rendering loop. It first adjusts the canvas size to match
-                                            the display size using<code>webglUtils.resizeCanvasToDisplaySize</code>,
-                                            ensuring that the rendered scene matches the screen resolution. The viewport
-                                            is then set to cover the entire canvas. The code enables depth testing and
-                                            back-face culling to improve rendering visual correctness. The scene is
-                                            cleared to prepare for the new frame, and then each object in the scene is
-                                            iterated over. If the object is identified as the "light", its position is
-                                            dynamically updated based on the scene's control settings, slightly offset
-                                            in the z-direction. Each object's draw method is called to render it to the
-                                            scene. Finally,<code>requestAnimationFrame</code>is used to call the render
-                                            function again, creating a loop that continuously updates and renders the
-                                            scene.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h5 id="scenejs"><tt>Scene.js</tt></h5>
-                                    <p>The<code>scene.js</code>file defines a JavaScript class named<code>Scene</code>,
-                                        which is designed to manage a 3D scene using WebGL for rendering within a web
-                                        browser. The class is structured to handle various aspects of a 3D scene,
-                                        including object management, rendering settings, user input, and dynamic
-                                        adjustments through a graphical user interface (GUI).</p>
-                                    <ul>
-                                        <li><strong>Constructor and initialization</strong>: The Scene constructor takes
-                                            three parameters:<code>canvas_id</code>,<code>vertex_shader_id</code>,
-                                            and<code>fragment_shader_id</code>. These are used to initialize the WebGL
-                                            context, load shaders, and set up the rendering environment. The constructor
-                                            begins by creating an empty object to store scene objects and obtaining a
-                                            reference to the HTML canvas element using its ID. It then attempts to
-                                            initialize the WebGL rendering context on this canvas. If unsuccessful, it
-                                            logs an error message indicating that WebGL is not supported by the user's
-                                            browser.</li>
-                                        <li><strong>WebGL configuration</strong>: After successfully initializing WebGL,
-                                            the constructor configures various WebGL settings. It enables depth testing
-                                            to ensure that objects closer to the camera obscure those further away, and
-                                            it enables alpha blending to support transparency. The viewport is set to
-                                            match the canvas dimensions, ensuring that the rendered scene fills the
-                                            canvas.</li>
-                                        <li><strong>Shader program initialization</strong>: The constructor loads vertex
-                                            and fragment shaders using synchronous XMLHttpRequests, a method
-                                            encapsulated by the<code>getSourceSynch</code>function. These shaders are
-                                            compiled and linked into a WebGL program, which is then set as the active
-                                            program for rendering.</li>
-                                        <li><strong>GUI and input handling</strong>: The<code>Scene</code>class uses
-                                            the<code>dat.GUI</code>library to create a graphical user interface for
-                                            real-time control over various scene parameters, such as camera position,
-                                            lighting settings, and rendering options. This GUI allows users to
-                                            interactively modify the scene's appearance.
-                                            An<code>InputHandler</code>instance is also created to manage user input,
-                                            enabling dynamic interaction with the scene based on keyboard, mouse and
-                                            touch events.</li>
-                                        <li><strong>Scene controls and lighting</strong>: The<code>controls</code>object
-                                            within the constructor defines a set of default values for scene and
-                                            lighting parameters. These include camera position and orientation, light
-                                            source attributes, and flags for enabling or disabling certain rendering
-                                            features like normal mapping and specular mapping.</li>
-                                        <li><strong>GUI creation</strong>: The<code>createGui</code>method constructs
-                                            the GUI by adding controls for all the parameters defined in
-                                            the<code>controls</code>object. It organizes these controls into categories
-                                            and subcategories for better usability. Users can adjust these parameters in
-                                            real-time, and the changes are reflected immediately in the scene.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h5 id="sceneobjectjs"><tt>SceneObject.js</tt></h5>
-                                    <p>The<code>SceneObject.js</code>code defines a JavaScript class
-                                        named<code>SceneObject</code>, which is intended to represent an object within a
-                                        WebGL 3D scene.</p>
-                                    <ul>
-                                        <li><strong>Constructor</strong>: The<code>SceneObject</code>class constructor
-                                            takes several
-                                            parameters:<code>id</code>,<code>scene</code>,<code>sourceMesh</code>,<code>sourceMTL</code>,
-                                            and optional parameters for<code>position</code>,<code>rotation</code>,
-                                            and<code>scale</code>with default values. The<code>id</code>is likely a
-                                            unique identifier for the object. The<code>scene</code>parameter is an
-                                            instance the<code>Scene</code>class, which represents the entire 3D scene
-                                            and contains a WebGL rendering context (<code>gl</code>).
-                                            The<code>sourceMesh</code>and<code>sourceMTL</code>parameters are intended
-                                            for specifying the geometry (mesh) and material (MTL file) of the scene
-                                            object. The<code>position</code>,<code>rotation</code>,
-                                            and<code>scale</code>parameters allow the object to be placed and oriented
-                                            within the 3D scene.<br>Upon instantiation, the constructor initializes the
-                                            object's properties based on the provided arguments. It also initiates
-                                            loading of the mesh and materials by calling
-                                            the<code>loadMeshAndMaterials</code>method, which is an asynchronous
-                                            operation. Once the mesh and materials are loaded, the object is added to
-                                            the scene's objects collection using its<code>id</code>as the key.</li>
-                                        <li><strong><tt>loadMeshAndMaterials</tt>method</strong>:
-                                            The<code>loadMeshAndMaterials</code>method is an asynchronous function that
-                                            loads the object's mesh and materials. It uses a helper
-                                            function<code>loadMeshAndMaterials</code>(presumably imported from another
-                                            module) to perform the actual loading based on
-                                            the<code>sourceMesh</code>and<code>sourceMTL</code>provided during
-                                            construction. Once loaded, the mesh data is stored in the
-                                            object's<code>mesh</code>property, and a message is logged to the console.
-                                        </li>
-                                        <li><strong><tt>draw</tt>method</strong>: The<code>draw</code>method is
-                                            responsible for rendering the scene object. It calculates various matrices
-                                            needed for rendering, including the projection matrix, view matrix, and
-                                            world matrix, based on the object's position, rotation, scale, and the
-                                            scene's camera settings. It also calculates lighting information based on
-                                            the scene's controls. The method then sets up WebGL to use the appropriate
-                                            shader program and sets various uniforms needed for rendering, such as
-                                            lighting parameters and transformation matrices. Finally, it iterates over
-                                            the parts of the mesh, setting up the necessary WebGL state for each part
-                                            and drawing it.</li>
-                                    </ul>
-                                </li>
-                                <li>
-                                    <h5 id="inputhandlerjs"><tt>InputHandler.js</tt></h5>
-                                    <p>The<code>InputHandler.js</code>code defines a JavaScript class
-                                        named<code>InputHandler</code>, which is designed to manage various input events
-                                        for the web application, particularly those related to user interactions with a
-                                        canvas element.<br>The InputHandler class constructor takes three
-                                        parameters:<code>canvas</code>,<code>controls</code>, and<code>gui</code>. These
-                                        parameters are stored as properties of the class instance, so that it interacts
-                                        directly with the canvas element, modifies control settings (such as camera
-                                        angles, zoom levels, or other interactive parameters), and updates the graphical
-                                        user interface in response to user inputs.<br>The class listens for a variety of
-                                        events, including keyboard presses, mouse movements, mouse clicks, mouse wheel
-                                        scrolling, and touch events. Each type of event has a corresponding method
-                                        within the class that handles the specific interaction:
-                                    <ul>
-                                        <li><strong>Keyboard Input</strong>: The<code>keyboardInput</code>method adjusts
-                                            control settings based on key presses, allowing for movement or adjustment
-                                            of parameters through keyboard commands.</li>
-                                        <li><strong>Mouse Events</strong>: The class handles mouse down, up, move, and
-                                            wheel events through respective methods. These methods enable dragging,
-                                            moving, and zooming functionalities, likely affecting the view or
-                                            orientation of the canvas content.</li>
-                                        <li><strong>Touch Events</strong>: Touch interactions are managed
-                                            through<code>touchStart</code>,<code>touchMove</code>, and
-                                            specifically<code>twoFingerTouchStart</code>and<code>twoFingerTouchMove</code>for
-                                            multi-touch gestures. These methods facilitate touch-based navigation and
-                                            manipulation, such as panning and zooming, on touch-enabled devices.</li>
-                                    </ul>The class also prevents default behaviors for these events to ensure the custom
-                                    interaction logic is executed without interference. Additionally, after handling
-                                    most events, the class updates the GUI to reflect any changes in controls or
-                                    settings, maintaining visual consistency and feedback for the user.</p>
-                                </li>
-                                <li>
-                                    <h5 id="meshloading">
-                                        <tt>meshLoader.js</tt>,<tt>textureUtils.js</tt>and<tt>parsers.js</tt></h5>
-                                    <p>These files load 3D meshes and their associated materials from OBJ and MTL files,
-                                        respectively, and prepares them for rendering in WebGL. The code is organized
-                                        across three main files:<code>parsers.js</code>,<code>textureUtils.js</code>,
-                                        and<code>meshLoader.js</code>, each serving a distinct purpose in the process.
-                                    <ul>
-                                        <li><strong><tt>parsers.js</tt></strong>: This file contains functions for
-                                            parsing the contents of OBJ and MTL files. OBJ files describe the geometry
-                                            of a 3D model, including vertex positions, texture coordinates, normals, and
-                                            faces that define the model's surface. The parser functions in this file
-                                            read the text of an OBJ file, interpret its contents, and organize the data
-                                            into a structured format that can be used to create WebGL buffers. The
-                                            functions handle different parts of the OBJ file format, such as vertices
-                                            (<code>v</code>), texture coordinates (<code>vt</code>), normals
-                                            (<code>vn</code>), faces (<code>f</code>), and material library references
-                                            (<code>mtllib</code>). Additionally, there are functions to handle changes
-                                            in geometry (<code>newGeometry</code>), setting up a new geometry
-                                            (<code>setGeometry</code>), and adding vertices to the current geometry
-                                            (<code>addVertex</code>).</li>
-                                        <li><strong><tt>textureUtils.js</tt></strong>: This file provides utility
-                                            functions for creating textures in WebGL. Textures are images applied to the
-                                            surfaces of 3D models to give them color and detail.
-                                            The<code>create1PixelTexture</code>function creates a simple texture from a
-                                            single pixel, useful for default or placeholder textures.
-                                            The<code>createTexture</code>function loads an image from a URL and creates
-                                            a texture from it. This function handles the asynchronous nature of image
-                                            loading and sets up the texture parameters based on whether the image
-                                            dimensions are powers of two, affecting how the texture is sampled and
-                                            mipmapped.</li>
-                                        <li><strong><tt>meshLoader.js</tt></strong>: This file is responsible for
-                                            orchestrating the loading of mesh and material data, parsing it, and
-                                            preparing it for rendering. The<code>loadMeshAndMaterials</code>function
-                                            performs several steps: fetching the OBJ and MTL files, parsing their
-                                            contents, loading textures for the materials defined in the MTL file, and
-                                            creating WebGL buffers for the mesh data. It uses the parsing functions
-                                            from<code>parsers.js</code>to interpret the OBJ and MTL files and the
-                                            texture creation functions from<code>textureUtils.js</code>to handle
-                                            material textures. The function also prepares default materials and textures
-                                            for cases where specific materials or textures are not defined. Finally, it
-                                            generates buffer information for the mesh data, including positions,
-                                            normals, texture coordinates, colors, and tangents, which are necessary for
-                                            correctly rendering the model with lighting and texture effects in WebGL.
-                                        </li>
-                                    </ul>
-                                    </p>
-                                </li>
-                            </ol>
-                        </div>
+                </div>
+                <div class="row" id="files_in_detail">
+                    <div class="col">
+                        <h3>Files in Detail</h3>
+                        <p>The following is a detailed description of the key files in the project:</p>
+                        <ol>
+                            <li>
+                                <h5 id="mainjs"><tt>main.js</tt></h5>
+                                <p>The code is structured into a main function that initializes the scene, adds
+                                    objects to it, and defines a rendering loop to continuously draw the scene.</p>
+                                <ul>
+                                    <li><strong>Initialization of the Scene</strong>: At the beginning of the main
+                                        function, a new Scene object is created with parameters specifying the HTML
+                                        canvas element ID ("canvas") and paths to the vertex and fragment shader
+                                        files. This Scene object is responsible for managing the WebGL context,
+                                        shaders, and the overall setup required for rendering the 3D scene. The
+                                        scene object is then logged to the console for debugging purposes.
+                                    </li>
+                                    <li><strong>Creation of scene objects</strong>: The code proceeds to define the
+                                        position of a light source by retrieving the light's x, y, and z coordinates
+                                        from the scene's controls. A SceneObject representing the light is then
+                                        created with its model and material files specified, along with its initial
+                                        position, rotation, and scale. Following this, additional SceneObject
+                                        instances for a room and a custom picture are created with their respective
+                                        model and material files. These objects are added to the scene to be
+                                        rendered.
+                                    </li>
+                                    <li><strong>Rendering loop</strong>: The render function defined within main is
+                                        the core of the rendering loop. It first adjusts the canvas size to match
+                                        the display size using <code>webglUtils.resizeCanvasToDisplaySize</code>,
+                                        ensuring that the rendered scene matches the screen resolution. The viewport
+                                        is then set to cover the entire canvas. The code enables depth testing and
+                                        back-face culling to improve rendering visual correctness. The scene is
+                                        cleared to prepare for the new frame, and then each object in the scene is
+                                        iterated over. If the object is identified as the "light", its position is
+                                        dynamically updated based on the scene's control settings, slightly offset
+                                        in the z-direction. Each object's draw method is called to render it to the
+                                        scene. Finally, <code>requestAnimationFrame</code> is used to call the render
+                                        function again, creating a loop that continuously updates and renders the
+                                        scene.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 id="scenejs"><tt>Scene.js</tt></h5>
+                                <p>The <code>scene.js</code>file defines a JavaScript class named <code>Scene</code>,
+                                    which is designed to manage a 3D scene using WebGL for rendering within a web
+                                    browser. The class is structured to handle various aspects of a 3D scene,
+                                    including object management, rendering settings, user input, and dynamic
+                                    adjustments through a graphical user interface (GUI).</p>
+                                <ul>
+                                    <li><strong>Constructor and initialization</strong>: The Scene constructor takes
+                                        three parameters: <code>canvas_id</code>, <code>vertex_shader_id</code>,
+                                        and <code>fragment_shader_id</code>. These are used to initialize the WebGL
+                                        context, load shaders, and set up the rendering environment. The constructor
+                                        begins by creating an empty object to store scene objects and obtaining a
+                                        reference to the HTML canvas element using its ID. It then attempts to
+                                        initialize the WebGL rendering context on this canvas. If unsuccessful, it
+                                        logs an error message indicating that WebGL is not supported by the user's
+                                        browser.
+                                    </li>
+                                    <li><strong>WebGL configuration</strong>: After successfully initializing WebGL,
+                                        the constructor configures various WebGL settings. It enables depth testing
+                                        to ensure that objects closer to the camera obscure those further away, and
+                                        it enables alpha blending to support transparency. The viewport is set to
+                                        match the canvas dimensions, ensuring that the rendered scene fills the
+                                        canvas.
+                                    </li>
+                                    <li><strong>Shader program initialization</strong>: The constructor loads vertex
+                                        and fragment shaders using synchronous XMLHttpRequests, a method
+                                        encapsulated by the <code>getSourceSynch</code> function. These shaders are
+                                        compiled and linked into a WebGL program, which is then set as the active
+                                        program for rendering.
+                                    </li>
+                                    <li><strong>GUI and input handling</strong>: The <code>Scene</code> class uses
+                                        the <code>dat.GUI</code> library to create a graphical user interface for
+                                        real-time control over various scene parameters, such as camera position,
+                                        lighting settings, and rendering options. This GUI allows users to
+                                        interactively modify the scene's appearance.
+                                        An <code>InputHandler</code> instance is also created to manage user input,
+                                        enabling dynamic interaction with the scene based on keyboard, mouse and
+                                        touch events.
+                                    </li>
+                                    <li><strong>Scene controls and lighting</strong>: The <code>controls</code> object
+                                        within the constructor defines a set of default values for scene and
+                                        lighting parameters. These include camera position and orientation, light
+                                        source attributes, and flags for enabling or disabling certain rendering
+                                        features like normal mapping and specular mapping.
+                                    </li>
+                                    <li><strong>GUI creation</strong>: The <code>createGui</code> method constructs
+                                        the GUI by adding controls for all the parameters defined in
+                                        the <code>controls</code> object. It organizes these controls into categories
+                                        and subcategories for better usability. Users can adjust these parameters in
+                                        real-time, and the changes are reflected immediately in the scene.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 id="sceneobjectjs"><tt>SceneObject.js</tt></h5>
+                                <p>The <code>SceneObject.js</code> code defines a JavaScript class
+                                    named <code>SceneObject</code>, which is intended to represent an object within a
+                                    WebGL 3D scene.</p>
+                                <ul>
+                                    <li><strong>Constructor</strong>: The<code>SceneObject</code> class constructor
+                                        takes several
+                                        parameters: <code>id</code>, <code>scene</code>, <code>sourceMesh</code>, <code>sourceMTL</code>,
+                                        and optional parameters for <code>position</code>, <code>rotation</code>,
+                                        and <code>scale</code> with default values. The <code>id</code> is likely a
+                                        unique identifier for the object. The <code>scene</code> parameter is an
+                                        instance the <code>Scene</code> class, which represents the entire 3D scene
+                                        and contains a WebGL rendering context (<code>gl</code>).
+                                        The <code>sourceMesh</code> and <code>sourceMTL</code> parameters are intended
+                                        for specifying the geometry (mesh) and material (MTL file) of the scene
+                                        object. The <code>position</code>, <code>rotation</code>,
+                                        and <code>scale</code> parameters allow the object to be placed and oriented
+                                        within the 3D scene.<br>Upon instantiation, the constructor initializes the
+                                        object's properties based on the provided arguments. It also initiates
+                                        loading of the mesh and materials by calling
+                                        the <code>loadMeshAndMaterials</code> method, which is an asynchronous
+                                        operation. Once the mesh and materials are loaded, the object is added to
+                                        the scene's objects collection using its <code>id</code> as the key.
+                                    </li>
+                                    <li><strong><tt>loadMeshAndMaterials</tt>method</strong>:
+                                        The <code>loadMeshAndMaterials</code> method is an asynchronous function that
+                                        loads the object's mesh and materials. It uses a helper
+                                        function <code>loadMeshAndMaterials</code>(presumably imported from another
+                                        module) to perform the actual loading based on
+                                        the <code>sourceMesh</code> and <code>sourceMTL</code> provided during
+                                        construction. Once loaded, the mesh data is stored in the
+                                        object's <code>mesh</code> property, and a message is logged to the console.
+                                    </li>
+                                    <li><strong><tt>draw</tt>method</strong>: The <code>draw</code> method is
+                                        responsible for rendering the scene object. It calculates various matrices
+                                        needed for rendering, including the projection matrix, view matrix, and
+                                        world matrix, based on the object's position, rotation, scale, and the
+                                        scene's camera settings. It also calculates lighting information based on
+                                        the scene's controls. The method then sets up WebGL to use the appropriate
+                                        shader program and sets various uniforms needed for rendering, such as
+                                        lighting parameters and transformation matrices. Finally, it iterates over
+                                        the parts of the mesh, setting up the necessary WebGL state for each part
+                                        and drawing it.
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <h5 id="inputhandlerjs"><tt>InputHandler.js</tt></h5>
+                                <p>The <code>InputHandler.js</code> code defines a JavaScript class
+                                    named <code>InputHandler</code>, which is designed to manage various input events
+                                    for the web application, particularly those related to user interactions with a
+                                    canvas element.<br>The InputHandler class constructor takes three
+                                    parameters: <code>canvas</code>, <code>controls</code>, and <code>gui</code>. These
+                                    parameters are stored as properties of the class instance, so that it interacts
+                                    directly with the canvas element, modifies control settings (such as camera
+                                    angles, zoom levels, or other interactive parameters), and updates the graphical
+                                    user interface in response to user inputs.<br>The class listens for a variety of
+                                    events, including keyboard presses, mouse movements, mouse clicks, mouse wheel
+                                    scrolling, and touch events. Each type of event has a corresponding method
+                                    within the class that handles the specific interaction:
+                                <ul>
+                                    <li><strong>Keyboard Input</strong>: The <code>keyboardInput</code> method adjusts
+                                        control settings based on key presses, allowing for movement or adjustment
+                                        of parameters through keyboard commands.
+                                    </li>
+                                    <li><strong>Mouse Events</strong>: The class handles mouse down, up, move, and
+                                        wheel events through respective methods. These methods enable dragging,
+                                        moving, and zooming functionalities, likely affecting the view or
+                                        orientation of the canvas content.
+                                    </li>
+                                    <li><strong>Touch Events</strong>: Touch interactions are managed
+                                        through <code>touchStart</code>, <code>touchMove</code>, and
+                                        specifically <code>twoFingerTouchStart</code> and
+                                        <code>twoFingerTouchMove</code>
+                                        for multi-touch gestures. These methods facilitate touch-based navigation and
+                                        manipulation, such as panning and zooming, on touch-enabled devices.
+                                    </li>
+                                </ul>
+                                The class also prevents default behaviors for these events to ensure the custom
+                                interaction logic is executed without interference. Additionally, after handling
+                                most events, the class updates the GUI to reflect any changes in controls or
+                                settings, maintaining visual consistency and feedback for the user.</p>
+                            </li>
+                            <li>
+                                <h5 id="meshloading">
+                                    <tt>meshLoader.js</tt>,<tt>textureUtils.js</tt>and<tt>parsers.js</tt></h5>
+                                <p>These files load 3D meshes and their associated materials from OBJ and MTL files,
+                                    respectively, and prepares them for rendering in WebGL. The code is organized
+                                    across three main files: <code>parsers.js</code>, <code>textureUtils.js</code>,
+                                    and <code>meshLoader.js</code>, each serving a distinct purpose in the process.
+                                <ul>
+                                    <li><strong><tt>parsers.js</tt></strong>: This file contains functions for
+                                        parsing the contents of OBJ and MTL files. OBJ files describe the geometry
+                                        of a 3D model, including vertex positions, texture coordinates, normals, and
+                                        faces that define the model's surface. The parser functions in this file
+                                        read the text of an OBJ file, interpret its contents, and organize the data
+                                        into a structured format that can be used to create WebGL buffers. The
+                                        functions handle different parts of the OBJ file format, such as vertices
+                                        (<code>v</code>), texture coordinates (<code>vt</code>), normals
+                                        (<code>vn</code>), faces (<code>f</code>), and material library references
+                                        (<code>mtllib</code>). Additionally, there are functions to handle changes
+                                        in geometry (<code>newGeometry</code>), setting up a new geometry
+                                        (<code>setGeometry</code>), and adding vertices to the current geometry
+                                        (<code>addVertex</code>).
+                                    </li>
+                                    <li><strong><tt>textureUtils.js</tt></strong>: This file provides utility
+                                        functions for creating textures in WebGL. Textures are images applied to the
+                                        surfaces of 3D models to give them color and detail.
+                                        The <code>create1PixelTexture</code> function creates a simple texture from a
+                                        single pixel, useful for default or placeholder textures.
+                                        The <code>createTexture</code> function loads an image from a URL and creates
+                                        a texture from it. This function handles the asynchronous nature of image
+                                        loading and sets up the texture parameters based on whether the image
+                                        dimensions are powers of two, affecting how the texture is sampled and
+                                        mipmapped.
+                                    </li>
+                                    <li><strong><tt>meshLoader.js</tt></strong>: This file is responsible for
+                                        orchestrating the loading of mesh and material data, parsing it, and
+                                        preparing it for rendering. The <code>loadMeshAndMaterials</code> function
+                                        performs several steps: fetching the OBJ and MTL files, parsing their
+                                        contents, loading textures for the materials defined in the MTL file, and
+                                        creating WebGL buffers for the mesh data. It uses the parsing functions
+                                        from <code>parsers.js</code> to interpret the OBJ and MTL files and the
+                                        texture creation functions from <code>textureUtils.js</code> to handle
+                                        material textures. The function also prepares default materials and textures
+                                        for cases where specific materials or textures are not defined. Finally, it
+                                        generates buffer information for the mesh data, including positions,
+                                        normals, texture coordinates, colors, and tangents, which are necessary for
+                                        correctly rendering the model with lighting and texture effects in WebGL.
+                                    </li>
+                                </ul>
+                                </p>
+                            </li>
+                        </ol>
                     </div>
-                    <div class="row" id="shader">
-                        <div class="col">
-                            <h3>Shaders</h3>
-                            <p>The project uses two shaders: a<strong>vertex shader</strong>and a<strong>fragment
-                                    shader</strong>. The shaders are written in GLSL (OpenGL Shading Language) and are
-                                responsible for processing vertices and fragments, respectively, during the rendering
-                                process.
-                            <h4>Vertex Shader Explanation</h4>
-                            <p>The vertex shader (<code>vertex_shader.glsl</code>) operates on individual vertices of a
-                                3D model. It receives several attributes for each vertex, including its position
-                                (<code>a_position</code>), normal vector (<code>a_normal</code>), tangent vector
-                                (<code>a_tangent</code>), texture coordinates (<code>a_texcoord</code>), and color
-                                (<code>a_color</code>). Additionally, it uses uniform variables that are constant for
-                                all vertices being processed in a single draw call, such as the transformation matrices
-                                (<code>u_projection</code>,<code>u_view</code>,<code>u_world</code>), the world
-                                positions of the light source (<code>u_lightWorldPosition</code>), and the camera/view
-                                (<code>u_viewWorldPosition</code>).<br>The main tasks of the vertex shader include:
-                            <ol>
-                                <li><strong>Transforming vertex positions</strong>: It calculates the vertex's position
-                                    in world space by multiplying the model's world matrix (<code>u_world</code>) with
-                                    the vertex's position. Then, it computes the vertex's position in clip space (the
-                                    final position on the screen) by further multiplying with the view and projection
-                                    matrices (<code>u_view</code>and<code>u_projection</code>).</li>
-                                <li><strong>Normal and tangent transformation</strong>: It transforms the vertex's
-                                    normal and tangent vectors to align with the world space orientation of the model.
-                                    This is crucial for correct lighting calculations in the fragment shader.</li>
-                                <li><strong>Passing through attributes</strong>: It passes through the texture
-                                    coordinates and color directly to the fragment shader without modification.</li>
-                                <li><strong>Calculating light and view vectors</strong>: It computes vectors from the
-                                    surface to the light source and from the surface to the camera. These vectors are
-                                    used in the fragment shader for lighting calculations.</li>
-                            </ol>
-                            <h4>Fragment Shader Explanation</h4>The fragment shader (<code>fragment_shader.glsl</code>)
-                            operates on fragments (potential pixels) and determines their final color. It receives
-                            varying variables interpolated from the vertex shader, including the transformed normal
-                            (<code>v_normal</code>), tangent (<code>v_tangent</code>), texture coordinates
-                            (<code>v_texcoord</code>), color (<code>v_color</code>), and the vectors to the light source
-                            and view (<code>v_surfaceToLight</code>and<code>v_surfaceToView</code>). It also uses
-                            several uniform variables to define material properties and lighting conditions.<br>The main
-                            tasks of the fragment shader include:</p>
-                            <ol>
-                                <li><strong>Normal mapping</strong>: If enabled (<code>u_useNormalMap</code>), it
-                                    modifies the surface normal based on a normal map texture. This allows for detailed
-                                    surface lighting effects without increasing the geometric complexity of the model.
-                                </li>
-                                <li><strong>Lighting calculations</strong>: It calculates the diffuse and specular
-                                    lighting based on the surface's orientation to the light source and view. This can
-                                    be done using either a directional light model or by directly using the light and
-                                    view vectors calculated in the vertex shader.</li>
-                                <li><strong>Texturing and color</strong>: It applies a diffuse texture map and
-                                    optionally a specular map to determine the surface's diffuse and specular colors. It
-                                    also factors in the vertex color for additional color effects.</li>
-                                <li><strong>Opacity and discard</strong>: It calculates the effective opacity of the
-                                    fragment and discards it if below a certain threshold, allowing for transparency
-                                    effects.</li>
-                                <li><strong>Final color calculation</strong>: It combines the emissive, ambient,
-                                    diffuse, and specular contributions to compute the final color of the fragment,
-                                    factoring in the light color and material shininess.</li>
-                            </ol>
-                        </div>
+                </div>
+                <div class="row" id="shader">
+                    <div class="col">
+                        <h3>Shaders</h3>
+                        <p>The project uses two shaders: a<strong>vertex shader</strong>and a<strong>fragment
+                            shader</strong>. The shaders are written in GLSL (OpenGL Shading Language) and are
+                            responsible for processing vertices and fragments, respectively, during the rendering
+                            process.
+                        <h4>Vertex Shader Explanation</h4>
+                        <p>The vertex shader (<code>vertex_shader.glsl</code>) operates on individual vertices of a
+                            3D model. It receives several attributes for each vertex, including its position
+                            (<code>a_position</code>), normal vector (<code>a_normal</code>), tangent vector
+                            (<code>a_tangent</code>), texture coordinates (<code>a_texcoord</code>), and color
+                            (<code>a_color</code>). Additionally, it uses uniform variables that are constant for
+                            all vertices being processed in a single draw call, such as the transformation matrices
+                            (<code>u_projection</code>,<code>u_view</code>,<code>u_world</code>), the world
+                            positions of the light source (<code>u_lightWorldPosition</code>), and the camera/view
+                            (<code>u_viewWorldPosition</code>).<br>The main tasks of the vertex shader include:
+                        <ol>
+                            <li><strong>Transforming vertex positions</strong>: It calculates the vertex's position
+                                in world space by multiplying the model's world matrix (<code>u_world</code>) with
+                                the vertex's position. Then, it computes the vertex's position in clip space (the
+                                final position on the screen) by further multiplying with the view and projection
+                                matrices (<code>u_view</code>and<code>u_projection</code>).
+                            </li>
+                            <li><strong>Normal and tangent transformation</strong>: It transforms the vertex's
+                                normal and tangent vectors to align with the world space orientation of the model.
+                                This is crucial for correct lighting calculations in the fragment shader.
+                            </li>
+                            <li><strong>Passing through attributes</strong>: It passes through the texture
+                                coordinates and color directly to the fragment shader without modification.
+                            </li>
+                            <li><strong>Calculating light and view vectors</strong>: It computes vectors from the
+                                surface to the light source and from the surface to the camera. These vectors are
+                                used in the fragment shader for lighting calculations.
+                            </li>
+                        </ol>
+                        <h4>Fragment Shader Explanation</h4>The fragment shader (<code>fragment_shader.glsl</code>)
+                        operates on fragments (potential pixels) and determines their final color. It receives
+                        varying variables interpolated from the vertex shader, including the transformed normal
+                        (<code>v_normal</code>), tangent (<code>v_tangent</code>), texture coordinates
+                        (<code>v_texcoord</code>), color (<code>v_color</code>), and the vectors to the light source
+                        and view (<code>v_surfaceToLight</code>and<code>v_surfaceToView</code>). It also uses
+                        several uniform variables to define material properties and lighting conditions.<br>The main
+                        tasks of the fragment shader include:</p>
+                        <ol>
+                            <li><strong>Normal mapping</strong>: If enabled (<code>u_useNormalMap</code>), it
+                                modifies the surface normal based on a normal map texture. This allows for detailed
+                                surface lighting effects without increasing the geometric complexity of the model.
+                            </li>
+                            <li><strong>Lighting calculations</strong>: It calculates the diffuse and specular
+                                lighting based on the surface's orientation to the light source and view. This can
+                                be done using either a directional light model or by directly using the light and
+                                view vectors calculated in the vertex shader.
+                            </li>
+                            <li><strong>Texturing and color</strong>: It applies a diffuse texture map and
+                                optionally a specular map to determine the surface's diffuse and specular colors. It
+                                also factors in the vertex color for additional color effects.
+                            </li>
+                            <li><strong>Opacity and discard</strong>: It calculates the effective opacity of the
+                                fragment and discards it if below a certain threshold, allowing for transparency
+                                effects.
+                            </li>
+                            <li><strong>Final color calculation</strong>: It combines the emissive, ambient,
+                                diffuse, and specular contributions to compute the final color of the fragment,
+                                factoring in the light color and material shininess.
+                            </li>
+                        </ol>
                     </div>
-                    <div class="row" id="gui_controls">
-                        <div class="col">
-                            <h3>GUI controls</h3>
-                            <p>The GUI created by dat.GUI in this context is used to control various aspects of a WebGL
-                                scene, including:</p>
-                            <ul>
-                                <li>
-                                    <p><strong>Scene controls</strong>: Allows the user to adjust the position of the
-                                        scene or camera (x, y, z coordinates), the field of view (fov), and the camera's
-                                        orientation (phi and theta angles), as well as the distance of the camera from
-                                        the scene.</p><video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay
-                                        muted>
-                                        <source src="./videos/scene_controls.mp4" type="video/mp4">Your browser does not
-                                        support the video tag.
-                                    </video>
-                                </li>
-                                <li>
-                                    <p><strong>Light controls</strong>: Provides controls for adjusting the intensity
-                                        and color of the light in the scene. It also includes sub-folders for more
-                                        specific types of light, such as:</p>
-                                    <ul>
-                                        <li><strong>Spotlight controls</strong>: Allows for the manipulation of the
-                                            spotlight's position (x, y, z coordinates).</li>
-                                        <li><strong>Directional Light controls</strong>: Offers toggles and controls for
-                                            a directional light's usage and direction (x, y, z components).</li>
-                                    </ul><video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay muted>
-                                        <source src="./videos/light_controls.mp4" type="video/mp4">Your browser does not
-                                        support the video tag.
-                                    </video>
-                                </li>
-                                <li>
-                                    <p><strong>Advanced rendering</strong>: Contains toggles for using normal maps and
-                                        specular maps, which are techniques used to enhance the visual quality of the
-                                        rendered scene.</p><video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay
-                                        muted>
-                                        <source src="./videos/advanced_rendering.mp4" type="video/mp4">Your browser does
-                                        not support the video tag.
-                                    </video>
-                                </li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="row" id="gui_controls">
+                    <div class="col">
+                        <h3>GUI controls</h3>
+                        <p>The GUI created by dat.GUI in this context is used to control various aspects of a WebGL
+                            scene, including:</p>
+                        <ul>
+                            <li>
+                                <p><strong>Scene controls</strong>: Allows the user to adjust the position of the
+                                    scene or camera (x, y, z coordinates), the field of view (fov), and the camera's
+                                    orientation (phi and theta angles), as well as the distance of the camera from
+                                    the scene.</p>
+                                <video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay
+                                       muted>
+                                    <source src="./videos/scene_controls.mp4" type="video/mp4">
+                                    Your browser does not
+                                    support the video tag.
+                                </video>
+                            </li>
+                            <li>
+                                <p><strong>Light controls</strong>: Provides controls for adjusting the intensity
+                                    and color of the light in the scene. It also includes sub-folders for more
+                                    specific types of light, such as:</p>
+                                <ul>
+                                    <li><strong>Spotlight controls</strong>: Allows for the manipulation of the
+                                        spotlight's position (x, y, z coordinates).
+                                    </li>
+                                    <li><strong>Directional Light controls</strong>: Offers toggles and controls for
+                                        a directional light's usage and direction (x, y, z components).
+                                    </li>
+                                </ul>
+                                <video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay muted>
+                                    <source src="./videos/light_controls.mp4" type="video/mp4">
+                                    Your browser does not
+                                    support the video tag.
+                                </video>
+                            </li>
+                            <li>
+                                <p><strong>Advanced rendering</strong>: Contains toggles for using normal maps and
+                                    specular maps, which are techniques used to enhance the visual quality of the
+                                    rendered scene.</p>
+                                <video class="col-12 mb-3" style="aspect-ratio:2/1" autoplay
+                                       muted>
+                                    <source src="./videos/advanced_rendering.mp4" type="video/mp4">
+                                    Your browser does
+                                    not support the video tag.
+                                </video>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="row" id="3d_models">
-                        <div class="col">
-                            <h3>3D models</h3>
-                            <p>The models used in this project are 3: the room, the custom painting with my face and the
-                                light bulb. The 3D model of the room was taken from Sketchfab, at the following link:<a
+                </div>
+                <div class="row" id="3d_models">
+                    <div class="col">
+                        <h3>3D models</h3>
+                        <p>The models used in this project are 3: the room, the custom painting with my face and the
+                            light bulb. The 3D model of the room was taken from Sketchfab, at the following link:<a
                                     href="https://sketchfab.com/3d-models/the-bathroom-free-d5e5035dda434b8d9beaa7271f1c85fc"
                                     target="_blank">Link to the 3D model of the room</a></p>
-                            <div class="sketchfab-embed-wrapper"><iframe class="col-12 mb-3" style="aspect-ratio:2/1"
+                        <div class="sketchfab-embed-wrapper">
+                            <iframe class="col-12 mb-3" style="aspect-ratio:2/1"
                                     title="The Bathroom (Free)" frameborder="0" allowfullscreen
                                     mozallowfullscreen="true" webkitallowfullscreen="true"
                                     allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
                                     execution-while-out-of-viewport execution-while-not-rendered web-share
                                     src="https://sketchfab.com/models/d5e5035dda434b8d9beaa7271f1c85fc/embed?dnt=1"></iframe>
-                                <p style="font-size:13px;font-weight:400;margin:5px;color:#4a4a4a"><a
-                                        href="https://sketchfab.com/3d-models/the-bathroom-free-d5e5035dda434b8d9beaa7271f1c85fc?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
-                                        target="_blank" rel="nofollow" style="font-weight:700;color:#1caad9">The
-                                        Bathroom (Free)</a>by<a
-                                        href="https://sketchfab.com/Evanz?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
-                                        target="_blank" rel="nofollow"
-                                        style="font-weight:700;color:#1caad9">Evan</a>on<a
-                                        href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
-                                        target="_blank" rel="nofollow"
-                                        style="font-weight:700;color:#1caad9">Sketchfab</a></p>
-                            </div>
-                            <p>The 3D model of the light bulb was taken from Sketchfab, at the following link:<a
-                                    href="https://sketchfab.com/3d-models/low-poly-light-bulb-a7d27c2224d94c86a04083de8f9df7db"
-                                    target="_blank">Link to the 3D model of the light bulb</a></p>
-                            <div class="sketchfab-embed-wrapper"><iframe title="Low Poly Light Bulb" class="col-12 mb-3"
+                            <p style="font-size:13px;font-weight:400;margin:5px;color:#4a4a4a"><a
+                                    href="https://sketchfab.com/3d-models/the-bathroom-free-d5e5035dda434b8d9beaa7271f1c85fc?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
+                                    target="_blank" rel="nofollow" style="font-weight:700;color:#1caad9">The
+                                Bathroom (Free)</a>by<a
+                                    href="https://sketchfab.com/Evanz?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
+                                    target="_blank" rel="nofollow"
+                                    style="font-weight:700;color:#1caad9">Evan</a>on<a
+                                    href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=d5e5035dda434b8d9beaa7271f1c85fc"
+                                    target="_blank" rel="nofollow"
+                                    style="font-weight:700;color:#1caad9">Sketchfab</a></p>
+                        </div>
+                        <p>The 3D model of the light bulb was taken from Sketchfab, at the following link:<a
+                                href="https://sketchfab.com/3d-models/low-poly-light-bulb-a7d27c2224d94c86a04083de8f9df7db"
+                                target="_blank">Link to the 3D model of the light bulb</a></p>
+                        <div class="sketchfab-embed-wrapper">
+                            <iframe title="Low Poly Light Bulb" class="col-12 mb-3"
                                     style="aspect-ratio:2/1" frameborder="0" style="min-height:300px" allowfullscreen
                                     mozallowfullscreen="true" webkitallowfullscreen="true"
                                     allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking
                                     execution-while-out-of-viewport execution-while-not-rendered web-share
                                     src="https://sketchfab.com/models/a7d27c2224d94c86a04083de8f9df7db/embed?dnt=1"></iframe>
-                                <p style="font-size:13px;font-weight:400;margin:5px;color:#4a4a4a"><a
-                                        href="https://sketchfab.com/3d-models/low-poly-light-bulb-a7d27c2224d94c86a04083de8f9df7db?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
-                                        target="_blank" rel="nofollow" style="font-weight:700;color:#1caad9">Low Poly
-                                        Light Bulb</a>by<a
-                                        href="https://sketchfab.com/AleixoAlonso?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
-                                        target="_blank" rel="nofollow"
-                                        style="font-weight:700;color:#1caad9">AleixoAlonso</a>on<a
-                                        href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
-                                        target="_blank" rel="nofollow"
-                                        style="font-weight:700;color:#1caad9">Sketchfab</a></p>
-                            </div>
-                            <p>The 3D model of the custom painting with my face was taken from the room model.The
-                                painting is a copy of the paintings already in the room, but the texture was changed
-                                through blender to include my face.<br>All models were downloaded in FBX format and
-                                converted to OBJ format via<strong>Blender</strong>. When importing the model into
-                                Blender, the materials were loaded incorrectly, so the materials had to be changed and
-                                textures reapplied.</p>
+                            <p style="font-size:13px;font-weight:400;margin:5px;color:#4a4a4a"><a
+                                    href="https://sketchfab.com/3d-models/low-poly-light-bulb-a7d27c2224d94c86a04083de8f9df7db?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
+                                    target="_blank" rel="nofollow" style="font-weight:700;color:#1caad9">Low Poly
+                                Light Bulb</a>by<a
+                                    href="https://sketchfab.com/AleixoAlonso?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
+                                    target="_blank" rel="nofollow"
+                                    style="font-weight:700;color:#1caad9">AleixoAlonso</a>on<a
+                                    href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=a7d27c2224d94c86a04083de8f9df7db"
+                                    target="_blank" rel="nofollow"
+                                    style="font-weight:700;color:#1caad9">Sketchfab</a></p>
                         </div>
+                        <p>The 3D model of the custom painting with my face was taken from the room model.The
+                            painting is a copy of the paintings already in the room, but the texture was changed
+                            through blender to include my face.<br>All models were downloaded in FBX format and
+                            converted to OBJ format via<strong>Blender</strong>. When importing the model into
+                            Blender, the materials were loaded incorrectly, so the materials had to be changed and
+                            textures reapplied.</p>
                     </div>
-                    <div class="row" id="references">
-                        <div class="col">
-                            <h3>References</h3>
-                            <p>The following resources were used in the development of this project:</p>
-                            <ul>
-                                <li><a href="https://webglfundamentals.org/" target="_blank">WebGL Fundamentals</a>: A
-                                    comprehensive guide to WebGL programming concepts and techniques, including shaders,
-                                    buffers, textures, and more.</li>
-                                <li><a href="https://learnwebgl.brown37.net/index.html" target="_blank">Learn WebGL</a>:
-                                    A series of tutorials and examples for learning WebGL programming from the basics to
-                                    advanced topics.</li>
-                                <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial"
-                                        target="_blank">MDN Web Docs - WebGL Tutorial</a>: A tutorial series on WebGL
-                                    programming from Mozilla Developer Network.</li>
-                                <li><a href="https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf"
-                                        target="_blank">WebGL Reference Card</a>: A quick reference guide to WebGL
-                                    functions, constants, and syntax.</li>
-                            </ul>
-                        </div>
+                </div>
+                <div class="row" id="references">
+                    <div class="col">
+                        <h3>References</h3>
+                        <p>The following resources were used in the development of this project:</p>
+                        <ul>
+                            <li><a href="https://webglfundamentals.org/" target="_blank">WebGL Fundamentals</a>: A
+                                comprehensive guide to WebGL programming concepts and techniques, including shaders,
+                                buffers, textures, and more.
+                            </li>
+                            <li><a href="https://learnwebgl.brown37.net/index.html" target="_blank">Learn WebGL</a>:
+                                A series of tutorials and examples for learning WebGL programming from the basics to
+                                advanced topics.
+                            </li>
+                            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/WebGL_API/Tutorial"
+                                   target="_blank">MDN Web Docs - WebGL Tutorial</a>: A tutorial series on WebGL
+                                programming from Mozilla Developer Network.
+                            </li>
+                            <li><a href="https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf"
+                                   target="_blank">WebGL Reference Card</a>: A quick reference guide to WebGL
+                                functions, constants, and syntax.
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</main>
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-<script>function toggleSidebar() { if (window.innerWidth < 992) { var e = document.getElementById("sidebarMenu"); new bootstrap.Collapse(e, { toggle: !0 }) } }</script>
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>function toggleSidebar() {
+    if (window.innerWidth < 992) {
+        var e = document.getElementById("sidebarMenu");
+        new bootstrap.Collapse(e, {toggle: !0})
+    }
+}</script>
 
 </html>
